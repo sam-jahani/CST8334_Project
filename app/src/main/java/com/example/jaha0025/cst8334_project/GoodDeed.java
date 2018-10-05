@@ -36,7 +36,7 @@ Next Screen
 
  */
 
-
+// Author: Philip Tharakan
 
 
 import android.graphics.Color;
