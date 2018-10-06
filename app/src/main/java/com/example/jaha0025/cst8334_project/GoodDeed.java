@@ -68,7 +68,7 @@ public class GoodDeed extends AppCompatActivity {
         textView3.setText("Welcome a Neighbour");
         textView3.setTextColor(Color.BLACK);
 
-        textView3.setTextSize(20);
+        textView3.setTextSize(12);
 
 
         //Button button = findViewById(R.id.button);
@@ -77,4 +77,7 @@ public class GoodDeed extends AppCompatActivity {
 
 
     }
+
+
+
 }
