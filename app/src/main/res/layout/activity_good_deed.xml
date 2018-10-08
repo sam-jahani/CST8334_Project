@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
 
 
-    android:background="@drawable/smallbg"
+    android:background="@color/BlueBackground"
     tools:context=".GoodDeed">
 
     <ImageView
@@ -198,17 +198,19 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/imageView2"
                 android:layout_width="290dp"
                 android:layout_height="52dp"
+                android:layout_gravity="fill"
+
                 app:layout_constraintBottom_toBottomOf="@+id/view"
                 app:layout_constraintEnd_toEndOf="@+id/view"
                 app:layout_constraintHorizontal_bias="0.404"
                 app:layout_constraintStart_toStartOf="@+id/view"
 
                 app:layout_constraintTop_toTopOf="@+id/view"
-                app:srcCompat="@drawable/blueupload" />
+                app:srcCompat="@android:drawable/ic_menu_camera" />
 
         </android.support.constraint.ConstraintLayout>
 
