@@ -54,8 +54,8 @@
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/constraintLayout2"
-        android:layout_width="904dp"
-        android:layout_height="389dp"
+        android:layout_width="907dp"
+        android:layout_height="388dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
