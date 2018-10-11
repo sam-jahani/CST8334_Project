@@ -45,7 +45,7 @@
         app:layout_constraintStart_toEndOf="@+id/imageView7"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.054"
-        app:srcCompat="@drawable/purple_acts" />
+        app:srcCompat="@drawable/zeel_icon_acts" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline"
