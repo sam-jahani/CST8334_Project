@@ -46,11 +46,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class GoodDeed extends AppCompatActivity {
 
@@ -63,6 +65,8 @@ public class GoodDeed extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_good_deed);
+
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         //sanmac
         ArrayList<ActOfKindness> acts = ActOfKindness.insertActs(this);
         ActDbAdapter adapter = new ActDbAdapter(this);
@@ -126,10 +130,16 @@ public class GoodDeed extends AppCompatActivity {
 
         ImageView leftArrow = findViewById(R.id.leftArrow);
 
+
+        Random r = new Random();
+        int rando = r.nextInt(10) + 1;
+
         leftArrow.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 if(cursor.moveToPrevious()){
+
+                    
                     act = ActDbAdapter.getActFromCursor(cursor);
                     textView.setText(act.aDescription);
                     textView2.setText(act.aQuestion);
@@ -144,6 +154,16 @@ public class GoodDeed extends AppCompatActivity {
         //button.setBackground(getDrawable(@drawable.bee.png));
         //button.setText();
 
+        ImageView homeButton = findViewById(R.id.homeButton);
+
+
+        homeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent k = new Intent(GoodDeed.this, MainMenu.class);
+                startActivity(k);
+            }
+        });
 
     }
 

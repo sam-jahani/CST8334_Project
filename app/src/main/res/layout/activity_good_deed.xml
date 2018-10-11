@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
 
 
-    android:background="@color/BlueBackground"
+    android:background="@drawable/zeel_bg"
     tools:context=".GoodDeed">
 
     <ImageView
@@ -36,7 +36,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1.0"
-            app:srcCompat="@drawable/grassbg"
+
             tools:layout_editor_absoluteX="0dp" />
 
         <ImageView
@@ -62,7 +62,7 @@
             app:srcCompat="@drawable/purple_acts" />
 
         <ImageView
-            android:id="@+id/imageView5"
+            android:id="@+id/homeButton"
             android:layout_width="142dp"
             android:layout_height="74dp"
 
