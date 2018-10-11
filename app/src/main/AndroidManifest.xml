@@ -23,11 +23,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".MainMenu"/>
+        <activity android:name=".GoodDeed">
+        <!--<intent-filter>-->
+            <!--<action android:name="android.intent.action.MAIN"/>-->
+
+            <!--<category android:name="android.intent.category.LAUNCHER" />-->
+        <!--</intent-filter>-->
+    </activity>
 
         <activity android:name=".CascadingGoodDeeds" />
        <!--<activity android:name=".GoodDeed" />-->
-        <activity android:name=".GoodDeed" >
+        <activity android:name=".MainMenu" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

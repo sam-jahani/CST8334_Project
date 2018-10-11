@@ -33,6 +33,7 @@ package com.example.jaha0025.cst8334_project;
  */
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -46,7 +47,7 @@ public class MainMenu extends AppCompatActivity {
     ImageView yellow_profile;
     ImageView purple_acts;
     ImageView speechbaloon;
-   // ImageView  add;
+    ImageView  add;
     MediaPlayer testSound;
 
 
@@ -70,16 +71,26 @@ public class MainMenu extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                AlertDialog alertDialog = new AlertDialog.Builder(MainMenu.this).create();
-                alertDialog.setTitle("Maybe you clicked the wrong button ?");
-                alertDialog.setMessage("You are already on the main menu screen");
-                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                            }
-                        });
-                alertDialog.show();
+
+                Intent myintent = new Intent(MainMenu.this, GoodDeed.class);
+                startActivity(myintent);
+
+
+//                AlertDialog alertDialog = new AlertDialog.Builder(MainMenu.this).create();
+//                alertDialog.setTitle("Maybe you clicked the wrong button ?");
+//                alertDialog.setMessage("You are already on the main menu screen");
+//                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+//                        new DialogInterface.OnClickListener() {
+//                            public void onClick(DialogInterface dialog, int which) {
+//
+//                                dialog.dismiss();
+////                                Intent myintent = new Intent(MainMenu.this, GoodDeed.class);
+////                                startActivity(myintent);
+//
+//                                //dialog.dismiss();
+//                            }
+//                        });
+//                alertDialog.show();
 
             }
         });
@@ -94,10 +105,25 @@ public class MainMenu extends AppCompatActivity {
                 AlertDialog alertDialog = new AlertDialog.Builder(MainMenu.this).create();
                 alertDialog.setTitle("This button will take you to the profile screen");
                 alertDialog.setMessage("Do you want to go to the profile screen?");
-                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+
+
+                alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "No",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.dismiss();
+                            }
+                        });
+
+
+                alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Yes",
+                        new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                    Intent myintent = new Intent(MainMenu.this, UserProfile.class);
+                                    startActivityForResult(myintent,50);
+
+                                    dialog.dismiss();
+
                             }
                         });
                 alertDialog.show();
@@ -121,16 +147,33 @@ The test audio is also played
                 AlertDialog alertDialog = new AlertDialog.Builder(MainMenu.this).create();
 
 
-                alertDialog.setTitle("This button will take you to the Random Acts Screen");
+                alertDialog.setTitle("This button will take you to the Random Acts of Kindness to perfrom");
                 alertDialog.setMessage("Do you want to go to the screen that lists the random acts of kindess?");
 
-                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Yes",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
+
+                                Intent myintent = new Intent(MainMenu.this, GoodDeed.class);
+                                startActivityForResult(myintent,50);
+
                                 Play();
                                 dialog.dismiss();
                             }
                         });
+
+
+
+                alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "No",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                dialog.dismiss();
+
+                            }
+                        });
+
+
                 alertDialog.show();
 
             }
@@ -142,13 +185,13 @@ The test audio is also played
 //            @Override
 //            public void onClick(View view) {
 //
-//                AlertDialog alertDialog = new AlertDialog.Builder(MainMenu.this).create();
+//              AlertDialog alertDialog = new AlertDialog.Builder(MainMenu.this).create();
 //                alertDialog.setTitle("This button will take the user to a random act of kindness that is selected from an SQL statement");
 //                alertDialog.setMessage("Will you do it?");
 //                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
 //                        new DialogInterface.OnClickListener() {
 //                            public void onClick(DialogInterface dialog, int which) {
-//                                //Play();
+//                               //Play();
 //                                dialog.dismiss();
 //                            }
 //                        });
@@ -203,8 +246,9 @@ The test audio is also played
      */
     @Override
     public void onStop(){
+
+        //testSound.release();
         super.onStop();
-        testSound.release();
     }
 
 
