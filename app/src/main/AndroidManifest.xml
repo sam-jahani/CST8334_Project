@@ -3,6 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.jaha0025.cst8334_project">
 
+    <supports-screens
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:smallScreens="true"
+        android:xlargeScreens="true"
+        />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
     <application
         android:fullBackupContent="true"
         android:allowBackup="true"
@@ -15,20 +26,27 @@
         <!--android:theme="@style/AppTheme"-->
         <activity android:name=".GoodDeed">
 
-        </activity>
-        <activity android:name=".CascadingGoodDeeds" />
-       <!--<activity android:name=".GoodDeed" />-->
-        <activity android:name=".MainMenu" />
-        <activity android:name=".Shop" />
-        <activity android:name=".UserProfile"/>
-        <activity android:name=".UserCustomize"
-            android:screenOrientation="landscape">
-
         <intent-filter>
             <action android:name="android.intent.action.MAIN"/>
 
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
+    </activity>
+
+        <activity android:name=".CascadingGoodDeeds" />
+       <!--<activity android:name=".GoodDeed" />-->
+        <activity android:name=".MainMenu" >
+
+
+
+
+        </activity>
+        <activity android:name=".Shop" />
+        <activity android:name=".UserProfile"/>
+        <activity android:name=".UserCustomize"
+            android:screenOrientation="landscape">
+
+
         </activity>
 
     </application>
