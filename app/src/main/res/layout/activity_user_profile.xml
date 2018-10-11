@@ -1,9 +1,302 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UserProfile">
+    android:background="@drawable/zeel_bg"
+    tools:context=".UserProfile"
+    android:orientation="vertical">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/proImgTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/zeel_label"
+            android:layout_marginLeft="448dp"
+            android:layout_marginTop="10dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1">
+
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/proConstraint"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintLeft_toLeftOf="@+id/proLinear">
+
+
+                <ImageView
+                    android:id="@+id/proImgBack"
+                    android:layout_width="418dp"
+                    android:layout_height="473dp"
+                    android:layout_marginStart="140dp"
+                    android:layout_marginTop="56dp"
+                    android:src="@drawable/zeel_profilebg"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/proTxtNameTab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="16dp"
+                    android:layout_marginStart="288dp"
+                    android:layout_marginTop="84dp"
+                    android:text="@string/app_name"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/proImgAvatar"
+                    android:layout_width="213dp"
+                    android:layout_height="219dp"
+                    android:layout_marginStart="248dp"
+                    android:layout_marginTop="124dp"
+                    android:src="@drawable/zeel_character_portrait"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/proBtnCustom"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="176dp"
+                    android:layout_marginTop="124dp"
+                    android:background="@drawable/roundcorner"
+                    android:src="@drawable/zeel_icon_customize"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/proImgBadges"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="472dp"
+                    android:layout_marginTop="308dp"
+                    android:src="@drawable/zeel_badges_grey"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <!--<ImageSwitcher-->
+                <!--android:id="@+id/proBadgesImg"-->
+                <!--android:layout_width="70dp"-->
+                <!--android:layout_height="70dp"-->
+                <!--android:layout_centerHorizontal="true"-->
+                <!--android:layout_centerVertical="true">-->
+
+                <!--</ImageSwitcher>-->
+
+                <TextView
+                    android:id="@+id/proTxtLevel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="288dp"
+                    android:layout_marginTop="348dp"
+                    android:text="Level 1"
+                    android:textSize="40dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ProgressBar
+                    android:id="@+id/proProgressBar"
+                    style="@android:style/Widget.ProgressBar.Horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="200dp"
+                    android:layout_marginTop="452dp"
+                    android:max="52"
+                    android:minWidth="300dp"
+                    android:minHeight="25dp"
+                    android:progress="0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/proBtnHome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="36dp"
+                    android:layout_marginTop="570dp"
+                    android:src="@drawable/zeel_icon_home"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/proBtnProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/zeel_icon_profile"
+                    android:layout_marginStart="276dp"
+                    android:layout_marginTop="570dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <ImageButton
+                    android:id="@+id/proBtnActs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="520dp"
+                    android:layout_marginTop="570dp"
+                    android:src="@drawable/zeel_icon_acts"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </android.support.constraint.ConstraintLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/proLinear"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/proTxtName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="80dp"
+                    android:text="Name : "
+                    android:textSize="40dp" />
+
+                <EditText
+                    android:id="@+id/proEdtName"
+                    android:layout_width="450dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="80dp"
+                    android:inputType="none"
+                    android:hint="Full Name"
+                    android:textSize="30dp"
+                    android:imeOptions="actionDone"/>
+
+
+
+                <ImageButton
+                    android:id="@+id/proBtnEditName"
+                    android:layout_width="53dp"
+                    android:layout_height="59dp"
+                    android:layout_marginTop="80dp"
+                    android:background="@color/colorAccent"
+                    android:src="@drawable/zeel_icon_edit" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/proTxtAge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Age     : "
+                    android:textSize="40dp" />
+
+                <EditText
+                    android:id="@+id/proEdtAge"
+                    android:layout_width="450dp"
+                    android:layout_height="wrap_content"
+                    android:hint="your age"
+                    android:inputType="none"
+                    android:textSize="30dp" />
+
+                <ImageButton
+                    android:id="@+id/proBtnEditAge"
+                    android:layout_width="53dp"
+                    android:layout_height="59dp"
+                    android:background="@color/colorAccent"
+                    android:src="@drawable/zeel_icon_edit" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/proTxtGrade"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Grade : "
+                    android:textSize="40dp" />
+
+                <EditText
+                    android:id="@+id/proEdtGrade"
+                    android:layout_width="450dp"
+                    android:layout_height="wrap_content"
+                    android:hint="grade"
+                    android:inputType="none"
+                    android:textSize="30dp" />
+
+                <ImageButton
+                    android:id="@+id/proBtnEditGrade"
+                    android:layout_width="53dp"
+                    android:layout_height="59dp"
+                    android:background="@color/colorAccent"
+                    android:src="@drawable/zeel_icon_edit" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/proTxtAbout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="About : "
+                    android:textSize="40dp" />
+
+                <EditText
+                    android:id="@+id/proEdtAbout"
+                    android:layout_width="450dp"
+                    android:layout_height="150dp"
+                    android:gravity="top"
+                    android:hint="about"
+                    android:inputType="none"
+                    android:textSize="30dp" />
+
+                <ImageButton
+                    android:id="@+id/proBtnEditAbout"
+                    android:layout_width="53dp"
+                    android:layout_height="59dp"
+                    android:background="@color/colorAccent"
+                    android:src="@drawable/zeel_icon_edit" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/proImgBee"
+                android:layout_width="201dp"
+                android:layout_height="208dp"
+                android:layout_gravity="center"
+                android:src="@drawable/zeel_bee3" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
