@@ -58,7 +58,7 @@ public class GoodDeed extends AppCompatActivity {
     ImageView imageViewUpload;
     TextView textView, textView2, textView3;
     public Cursor cursor;
-
+    ActOfKindness act;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,7 +78,7 @@ public class GoodDeed extends AppCompatActivity {
         textView = findViewById(R.id.textView);
         textView2 = findViewById(R.id.textView2);
         textView3 = findViewById(R.id.textView3);
-        ActOfKindness act;
+
         if(cursor.moveToFirst()){
             act = ActDbAdapter.getActFromCursor(cursor);
 
@@ -110,6 +110,33 @@ public class GoodDeed extends AppCompatActivity {
             }
         });
 
+        ImageView rightArrow = findViewById(R.id.rightArrow);
+
+        rightArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                if(cursor.moveToNext()){
+                    act = ActDbAdapter.getActFromCursor(cursor);
+                    textView.setText(act.aDescription);
+                    textView2.setText(act.aQuestion);
+                    textView3.setText(act.aTitle);
+                }
+            }
+        });
+
+        ImageView leftArrow = findViewById(R.id.leftArrow);
+
+        leftArrow.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                if(cursor.moveToPrevious()){
+                    act = ActDbAdapter.getActFromCursor(cursor);
+                    textView.setText(act.aDescription);
+                    textView2.setText(act.aQuestion);
+                    textView3.setText(act.aTitle);
+                }
+            }
+        });
 
 
 

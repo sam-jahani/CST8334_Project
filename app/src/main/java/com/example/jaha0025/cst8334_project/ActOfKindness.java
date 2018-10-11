@@ -20,9 +20,9 @@ public class ActOfKindness {
     public static ArrayList<ActOfKindness> insertActs(Context context){
         ArrayList<ActOfKindness> acts = new ArrayList<ActOfKindness>();
         String title, description, question;
-        InputStream is1 = context.getResources().openRawResource(R.raw.AoKTitles);
-        InputStream is2 = context.getResources().openRawResource(R.raw.AoKDescriptions);
-        InputStream is3 = context.getResources().openRawResource(R.raw.AoKQuestions);
+        InputStream is1 = context.getResources().openRawResource(R.raw.aok_titles);
+        InputStream is2 = context.getResources().openRawResource(R.raw.aok_descriptions);
+        InputStream is3 = context.getResources().openRawResource(R.raw.aok_questions);
         BufferedReader reader1 = new BufferedReader(new InputStreamReader(is1));
         BufferedReader reader2 = new BufferedReader(new InputStreamReader(is2));
         BufferedReader reader3 = new BufferedReader(new InputStreamReader(is3));
