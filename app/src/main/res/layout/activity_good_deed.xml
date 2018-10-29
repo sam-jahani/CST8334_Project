@@ -40,7 +40,7 @@
             tools:layout_editor_absoluteX="0dp" />
 
         <ImageView
-            android:id="@+id/imageView7"
+            android:id="@+id/profileButton"
             android:layout_width="142dp"
             android:layout_height="74dp"
             android:layout_marginStart="8dp"
@@ -52,13 +52,13 @@
             app:srcCompat="@drawable/yellow_profile" />
 
         <ImageView
-            android:id="@+id/imageView8"
+            android:id="@+id/goodDeed"
             android:layout_width="142dp"
             android:layout_height="74dp"
             android:layout_marginStart="212dp"
             android:layout_marginBottom="40dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView7"
+            app:layout_constraintStart_toEndOf="@+id/profileButton"
             app:srcCompat="@drawable/purple_acts" />
 
         <ImageView
@@ -70,7 +70,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/imageView7"
+            app:layout_constraintEnd_toStartOf="@+id/profileButton"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.67"
@@ -101,14 +101,14 @@
             android:layout_marginEnd="972dp"
             android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/imageButton"
+            app:layout_constraintEnd_toStartOf="@+id/doneBut"
             app:layout_constraintStart_toStartOf="@+id/imageView12"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
             app:layout_constraintVertical_bias="1.0"
             app:srcCompat="@drawable/bee_talking" />
 
         <ImageView
-            android:id="@+id/imageButton"
+            android:id="@+id/doneBut"
             android:layout_width="107dp"
             android:layout_height="85dp"
             android:layout_marginStart="8dp"
@@ -153,7 +153,7 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <ImageView
-            android:id="@+id/imageView9"
+            android:id="@+id/exit"
             android:layout_width="72dp"
             android:layout_height="61dp"
             android:layout_marginStart="8dp"
@@ -171,7 +171,7 @@
             android:layout_height="70dp"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toStartOf="@+id/imageView9"
+            app:layout_constraintEnd_toStartOf="@+id/exit"
             app:layout_constraintHorizontal_bias="0.543"
             app:layout_constraintStart_toStartOf="parent"
             app:srcCompat="@drawable/title"

@@ -41,6 +41,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -50,9 +51,12 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Random;
+
+
 
 public class GoodDeed extends AppCompatActivity {
 
@@ -61,10 +65,15 @@ public class GoodDeed extends AppCompatActivity {
     TextView textView, textView2, textView3;
     public Cursor cursor;
     ActOfKindness act;
+    MediaPlayer testSound2;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_good_deed);
+
+        Play();
 
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         //sanmac
@@ -139,7 +148,7 @@ public class GoodDeed extends AppCompatActivity {
             public void onClick(View v){
                 if(cursor.moveToPrevious()){
 
-                    
+
                     act = ActDbAdapter.getActFromCursor(cursor);
                     textView.setText(act.aDescription);
                     textView2.setText(act.aQuestion);
@@ -165,6 +174,41 @@ public class GoodDeed extends AppCompatActivity {
             }
         });
 
+        ImageView profileButton = findViewById(R.id.profileButton);
+
+        profileButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent k = new Intent(GoodDeed.this, UserProfile.class);
+                startActivity(k);
+            }
+        });
+
+        ImageView exitBut = findViewById(R.id.exit);
+
+        exitBut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent k = new Intent(GoodDeed.this, listofDeeds.class);
+                startActivity(k);
+            }
+        });
+
+
+        ImageView doneBut = findViewById(R.id.doneBut);
+        doneBut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Toast doneToast = Toast.makeText(getApplicationContext(),"Congratultions you have completed this Act of Kindness, I love you.", Toast.LENGTH_LONG);
+                //doneToast.show();
+                Toast.makeText(GoodDeed.this,"Congratultions you have completed this Act of Kindness, I love you.", Toast.LENGTH_LONG).show();
+                Intent k = new Intent(GoodDeed.this, listofDeeds.class);
+                startActivity(k);
+            }
+        });
+
+
+
     }
 
     @Override
@@ -174,5 +218,37 @@ public class GoodDeed extends AppCompatActivity {
             Bitmap imageBitmap = (Bitmap) extras.get("data");
             imageViewUpload.setImageBitmap(imageBitmap);
         }
+    }
+
+    public void onPause(){
+
+        testSound2.release();
+        super.onPause();
+
+    }
+
+    public void Play(){
+
+
+        if(testSound2 == null){
+
+            // instaniate the MediaPlayer object
+            testSound2 = MediaPlayer.create(this,R.raw.testsound_mainmenu);
+            //starting the recording
+            testSound2.start();
+            // when the recording is finished release the MediaPlayer
+            testSound2.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mediaPlayer) {
+                    //this code actually releases the player
+                    //testSound.release();
+                    testSound2.start();
+
+                }
+            });
+        }
+
+
+
     }
 }
