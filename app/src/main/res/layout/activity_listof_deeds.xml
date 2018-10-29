@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/zeel_bg"
+    tools:context=".listofDeeds">
+
+    <ImageView
+        android:id="@+id/homeButton2"
+        android:layout_width="139dp"
+        android:layout_height="72dp"
+
+        android:layout_marginStart="259dp"
+        android:layout_marginTop="172dp"
+        android:layout_marginEnd="82dp"
+        android:layout_marginBottom="28dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/profileButton2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listview"
+        app:srcCompat="@drawable/yellow_home" />
+
+    <ImageView
+        android:id="@+id/goodDeed2"
+        android:layout_width="142dp"
+        android:layout_height="74dp"
+        android:layout_marginStart="97dp"
+        android:layout_marginTop="168dp"
+        android:layout_marginEnd="296dp"
+        android:layout_marginBottom="28dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/profileButton2"
+        app:layout_constraintTop_toBottomOf="@+id/listview"
+        app:srcCompat="@drawable/purple_acts" />
+
+    <ImageView
+        android:id="@+id/profileButton2"
+        android:layout_width="142dp"
+        android:layout_height="74dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="28dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/goodDeed2"
+        app:layout_constraintHorizontal_bias="0.113"
+        app:layout_constraintStart_toEndOf="@+id/homeButton2"
+        app:layout_constraintTop_toBottomOf="@+id/listview"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/yellow_profile" />
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="944dp"
+        android:layout_height="344dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="272dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/backroundroundedeges"
+        android:descendantFocusability="blocksDescendants"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/grid_AOK_Title"
+        android:layout_width="947dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="7dp"
+        android:text="@string/good_deed_message"
+        android:textSize="35dp"
+        android:textColor="#000000"
+        android:gravity="center"
+
+        app:layout_constraintBottom_toTopOf="@+id/_dynamic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</android.support.constraint.ConstraintLayout>
