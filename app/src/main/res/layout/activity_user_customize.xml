@@ -4,15 +4,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/zeel_bg">
 
 
-    <ImageView
-        android:id="@+id/av_bg"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="fitXY"
-        app:srcCompat="@drawable/bg_no_flowers" />
+
 
     <ImageView
         android:id="@+id/av_clouds"
