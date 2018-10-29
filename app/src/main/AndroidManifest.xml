@@ -34,14 +34,21 @@
         <activity android:name=".CascadingGoodDeeds" />
        <!--<activity android:name=".GoodDeed" />-->
         <activity android:name=".MainMenu" >
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN"/>-->
+
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+        </activity>
+        <activity android:name=".Shop" />
+        <activity android:name=".UserProfile"/>
+        <activity android:name=".LoginPage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Shop" />
-        <activity android:name=".UserProfile"/>
 
     </application>
 

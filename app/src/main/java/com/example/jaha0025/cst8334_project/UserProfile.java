@@ -40,6 +40,7 @@ package com.example.jaha0025.cst8334_project;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -57,24 +58,25 @@ public class UserProfile extends AppCompatActivity {
 
     protected static final String ACTIVITY_NAME = "UserProfile";
 
+    MediaPlayer proTestSound;
+
     TextView proNameTabTxt;
     TextView proLevelTxt;
 
     TextView proNameTxt;
     EditText proNameEdit;
-    ImageButton proEditNameBtn;
 
     TextView proAgeTxt;
     EditText proAgeEdit;
-    ImageButton proEditAgeBtn;
 
     TextView proGradeTxt;
     EditText proGradeEdit;
-    ImageButton proEditGradeBtn;
 
     TextView proAboutTxt;
     EditText proAboutEdit;
-    ImageButton proEditAboutBtn;
+
+    ImageButton proEditBtn;
+    ImageButton proSaveBtn;
 
     ProgressBar proProgress;
     protected int proProgressStatus = 0;
@@ -83,6 +85,7 @@ public class UserProfile extends AppCompatActivity {
     ImageButton proHomeBtn;
     ImageButton proProfileBtn;
     ImageButton proActsBtn;
+    Boolean edit = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,81 +100,45 @@ public class UserProfile extends AppCompatActivity {
 
         proNameTxt = (TextView) findViewById(R.id.proTxtName);
         proNameEdit = (EditText) findViewById(R.id.proEdtName);
-//        proNameEdit.setOnEditorActionListener(new DoneOnEditorActionListener());
         proNameEdit.setEnabled(false);
-        proNameEdit.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (!hasFocus) {
-                    proNameEdit.setEnabled(false);
-                }
-            }
-        });
-        proEditNameBtn = (ImageButton) findViewById(R.id.proBtnEditName);
-        proEditNameBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                proNameEdit.setEnabled(true);
-            }
-        });
+//        proNameEdit.setOnEditorActionListener(new DoneOnEditorActionListener());
 
         proAgeTxt = (TextView) findViewById(R.id.proTxtAge);
         proAgeEdit = (EditText) findViewById(R.id.proEdtAge);
         proAgeEdit.setEnabled(false);
-        proAgeEdit.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (!hasFocus) {
-                    proAgeEdit.setEnabled(false);
-                }
-            }
-        });
-        proEditAgeBtn = (ImageButton) findViewById(R.id.proBtnEditAge);
-        proEditAgeBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                proAgeEdit.setEnabled(true);
-            }
-        });
 
         proGradeTxt = (TextView) findViewById(R.id.proTxtGrade);
         proGradeEdit = (EditText) findViewById(R.id.proEdtGrade);
         proGradeEdit.setEnabled(false);
-        proGradeEdit.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (!hasFocus) {
-                    proGradeEdit.setEnabled(false);
-                }
-            }
-        });
-        proEditGradeBtn = (ImageButton) findViewById(R.id.proBtnEditGrade);
-        proEditGradeBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                proGradeEdit.setEnabled(true);
-            }
-        });
 
         proAboutTxt = (TextView) findViewById(R.id.proTxtAbout);
         proAboutEdit = (EditText) findViewById(R.id.proEdtAbout);
         proAboutEdit.setEnabled(false);
-        proAboutEdit.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (!hasFocus) {
-                    proAboutEdit.setEnabled(false);
-                }
-            }
-        });
-        proEditAboutBtn = (ImageButton) findViewById(R.id.proBtnEditAbout);
-        proEditAboutBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                proAboutEdit.setEnabled(true);
-            }
-        });
+
+        Play();
+
+       proEditBtn = (ImageButton) findViewById(R.id.proBtnEdit);
+       proEditBtn.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               proNameEdit.setEnabled(true);
+               proAgeEdit.setEnabled(true);
+               proGradeEdit.setEnabled(true);
+               proAboutEdit.setEnabled(true);
+           }
+       });
+
+       proSaveBtn = (ImageButton) findViewById(R.id.proBtnSave);
+       proSaveBtn.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               proNameEdit.setEnabled(false);
+               proAgeEdit.setEnabled(false);
+               proGradeEdit.setEnabled(false);
+               proAboutEdit.setEnabled(false);
+
+           }
+       });
 
         proProgress = (ProgressBar) findViewById(R.id.proProgressBar);
 
@@ -209,6 +176,26 @@ public class UserProfile extends AppCompatActivity {
 
     }
 
+    public void Play() {
+
+        if (proTestSound == null) {
+
+            // instaniate the MediaPlayer object
+            proTestSound = MediaPlayer.create(this, R.raw.zeel_profile_background_music);
+            //starting the recording
+            proTestSound.start();
+            // when the recording is finished release the MediaPlayer
+            proTestSound.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mediaPlayer) {
+                    //this code actually releases the player
+                    proTestSound.start();
+//                    proTestSound.release();
+                }
+            });
+        }
+    }
+
     @Override
     protected void onResume(){
         super.onResume();
@@ -226,13 +213,14 @@ public class UserProfile extends AppCompatActivity {
     }
     @Override
     protected void onStop(){
+        proTestSound.release();
         super.onStop();
         Log.i(ACTIVITY_NAME,"In OnStop()");
     }
     @Override
-    protected void onDestroy(){
+    protected void onDestroy() {
         super.onDestroy();
-        Log.i(ACTIVITY_NAME,"In OnDestroy()");
+        Log.i(ACTIVITY_NAME, "In OnDestroy()");
     }
 
 }

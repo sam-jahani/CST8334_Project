@@ -247,7 +247,7 @@ The test audio is also played
     @Override
     public void onStop(){
 
-        //testSound.release();
+//        testSound.release();
         super.onStop();
     }
 
