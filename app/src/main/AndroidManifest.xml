@@ -50,6 +50,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".listofDeeds"></activity>
+        <activity android:name=".UserCustomize"/>
 
     </application>
 

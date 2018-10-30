@@ -149,8 +149,8 @@ public class UserProfile extends AppCompatActivity {
         proCustomBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent proIntentCustom = new Intent(UserProfile.this, UserCustomize.class);
-//                startActivityForResult(proIntentCustom.this, 50);
+                Intent proIntentCustom = new Intent(UserProfile.this, UserCustomize.class);
+                startActivityForResult(proIntentCustom, 50);
             }
         });
 
