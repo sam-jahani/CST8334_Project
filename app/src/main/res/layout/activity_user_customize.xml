@@ -68,7 +68,8 @@
             android:layout_toEndOf="@+id/av_character"
             android:fontFamily="@font/justthewayyouare"
             android:text="Head"
-            android:textSize="25dp" />
+            android:textSize="25dp"
+             />
 
         <TextView
             android:id="@+id/av_shirt_text"
@@ -80,7 +81,8 @@
             android:layout_toRightOf="@+id/av_character"
             android:fontFamily="@font/justthewayyouare"
             android:text="@string/shirt"
-            android:textSize="25dp" />
+            android:textSize="25dp"
+            />
 
         <TextView
             android:id="@+id/av_pants_text"
@@ -93,7 +95,8 @@
             android:layout_toRightOf="@+id/av_character"
             android:fontFamily="@font/justthewayyouare"
             android:text="@string/pants"
-            android:textSize="25dp" />
+            android:textSize="25dp"
+            />
 
         <TextView
             android:id="@+id/av_all_text"
@@ -105,7 +108,8 @@
             android:layout_toRightOf="@+id/av_character"
             android:fontFamily="@font/justthewayyouare"
             android:text="All"
-            android:textSize="25dp" />
+            android:textSize="25dp"
+            />
 
     </LinearLayout>
 

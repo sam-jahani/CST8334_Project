@@ -1,6 +1,7 @@
 package com.example.jaha0025.cst8334_project;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -31,9 +32,17 @@ public class UserCustomize extends AppCompatActivity {
 
         back = findViewById(R.id.av_close);
         head  = findViewById(R.id.av_head_text);
+        head.setTextColor(Color.WHITE);
+
         shirt = findViewById(R.id.av_shirt_text);
+        shirt.setTextColor(Color.WHITE);
+
         pants = findViewById(R.id.av_pants_text);
+        pants.setTextColor(Color.WHITE);
+
         all = findViewById(R.id.av_all_text);
+        all.setTextColor(Color.WHITE);
+
         headScroll = findViewById(R.id.av_head_scrollview);
         shirtScroll = findViewById(R.id.av_shirt_scrollview);
         pantsScroll = findViewById(R.id.av_pants_scrollview);
@@ -54,11 +63,16 @@ public class UserCustomize extends AppCompatActivity {
             public void onClick(View v){
                 headScroll.setVisibility(View.VISIBLE);
                 headScroll.scrollTo(0,0);
+                head.setTextColor(Color.RED);
 
                 shirtScroll.setVisibility(View.INVISIBLE);
                 pantsScroll.setVisibility(View.INVISIBLE);
                 allScroll.setVisibility(View.INVISIBLE);
 
+                shirt.setTextColor(Color.WHITE);
+                pants.setTextColor(Color.WHITE);
+                all.setTextColor(Color.WHITE);
+                
             }
         });
 
@@ -67,10 +81,15 @@ public class UserCustomize extends AppCompatActivity {
             public void onClick(View v){
                 shirtScroll.setVisibility(View.VISIBLE);
                 shirtScroll.scrollTo(0,0);
+                shirt.setTextColor(Color.RED);
 
                 headScroll.setVisibility(View.INVISIBLE);
                 pantsScroll.setVisibility(View.INVISIBLE);
                 allScroll.setVisibility(View.INVISIBLE);
+
+                head.setTextColor(Color.WHITE);
+                pants.setTextColor(Color.WHITE);
+                all.setTextColor(Color.WHITE);
 
             }
         });
@@ -80,10 +99,15 @@ public class UserCustomize extends AppCompatActivity {
             public void onClick(View v){
                 pantsScroll.setVisibility(View.VISIBLE);
                 pantsScroll.scrollTo(0,0);
+                pants.setTextColor(Color.RED);
 
                 headScroll.setVisibility(View.INVISIBLE);
                 shirtScroll.setVisibility(View.INVISIBLE);
                 allScroll.setVisibility(View.INVISIBLE);
+
+                head.setTextColor(Color.WHITE);
+                shirt.setTextColor(Color.WHITE);
+                all.setTextColor(Color.WHITE);
 
             }
         });
@@ -93,10 +117,15 @@ public class UserCustomize extends AppCompatActivity {
             public void onClick(View v){
                 allScroll.setVisibility(View.VISIBLE);
                 allScroll.scrollTo(0,0);
+                all.setTextColor(Color.RED);
 
                 headScroll.setVisibility(View.INVISIBLE);
                 shirtScroll.setVisibility(View.INVISIBLE);
                 pantsScroll.setVisibility(View.INVISIBLE);
+
+                head.setTextColor(Color.WHITE);
+                shirt.setTextColor(Color.WHITE);
+                pants.setTextColor(Color.WHITE);
 
             }
         });
