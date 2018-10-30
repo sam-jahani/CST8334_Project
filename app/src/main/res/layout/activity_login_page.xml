@@ -7,6 +7,16 @@
     tools:context=".LoginPage"
     android:background="@drawable/zeel_bg">
 
+    <ImageView
+        android:id="@+id/proImgBee"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="924dp"
+        android:layout_marginTop="232dp"
+        android:src="@drawable/bee_talking"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -14,8 +24,8 @@
 
         <ImageView
             android:id="@+id/logImgTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="500dp"
+            android:layout_height="100dp"
             android:src="@drawable/login_label"
             android:layout_marginStart="400dp"
             android:layout_marginTop="40dp"/>

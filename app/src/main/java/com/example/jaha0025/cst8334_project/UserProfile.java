@@ -51,6 +51,7 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -59,6 +60,8 @@ public class UserProfile extends AppCompatActivity {
     protected static final String ACTIVITY_NAME = "UserProfile";
 
     MediaPlayer proTestSound;
+
+    ImageView proBeeImg;
 
     TextView proNameTabTxt;
     TextView proLevelTxt;
@@ -85,7 +88,6 @@ public class UserProfile extends AppCompatActivity {
     ImageButton proHomeBtn;
     ImageButton proProfileBtn;
     ImageButton proActsBtn;
-    Boolean edit = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,6 +96,7 @@ public class UserProfile extends AppCompatActivity {
         Log.i(ACTIVITY_NAME,"In OnCreate()");
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
+        proBeeImg = (ImageView) findViewById(R.id.proImgBee);
 
         proNameTabTxt = (TextView) findViewById(R.id.proTxtNameTab);
         proLevelTxt = (TextView) findViewById(R.id.proTxtLevel);
@@ -169,7 +172,7 @@ public class UserProfile extends AppCompatActivity {
         proActsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent proIntentActs = new Intent(UserProfile.this, GoodDeed.class);
+                Intent proIntentActs = new Intent(UserProfile.this, listofDeeds.class);
                 startActivityForResult(proIntentActs,50);
             }
         });
