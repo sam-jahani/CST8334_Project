@@ -1,4 +1,5 @@
 <resources>
-    <string name="app_name">World-Helping Kids</string>
-    <string name="button">Done</string>
+    <string name="app_name">CST8334_Project</string>
+    <string name="pants">Pants</string>
+    <string name="shirt">Shirt</string>
 </resources>
