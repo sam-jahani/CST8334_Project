@@ -72,7 +72,7 @@ public class UserCustomize extends AppCompatActivity {
                 shirt.setTextColor(Color.WHITE);
                 pants.setTextColor(Color.WHITE);
                 all.setTextColor(Color.WHITE);
-                
+
             }
         });
 
