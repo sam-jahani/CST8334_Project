@@ -46,11 +46,29 @@
 
     <ImageView
         android:id="@+id/av_character"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="232dp"
+        android:layout_height="310dp"
         android:layout_alignParentStart="true"
         android:layout_marginTop="25dp"
-        app:srcCompat="@drawable/rough_char_portrait" />
+        app:srcCompat="@drawable/shirtless_avatar" />
+
+    <ImageView
+        android:id="@+id/av_character_shulk"
+        android:layout_width="232dp"
+        android:layout_height="310dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="25dp"
+        app:srcCompat="@drawable/aligned_shulk"
+        android:visibility="invisible"/>
+
+    <ImageView
+        android:id="@+id/av_character_ice"
+        android:layout_width="232dp"
+        android:layout_height="310dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="25dp"
+        app:srcCompat="@drawable/aligned_ice"
+        android:visibility="invisible"/>
 
     <LinearLayout
         android:id="@+id/av_lltv"
@@ -63,7 +81,7 @@
             android:id="@+id/av_head_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+
             android:layout_marginTop="15dp"
             android:layout_toEndOf="@+id/av_character"
             android:fontFamily="@font/justthewayyouare"
@@ -220,20 +238,20 @@
             app:srcCompat="@drawable/shirtstemp" />
 
         <ImageView
-            android:id="@+id/imageView2.4"
+            android:id="@+id/av_shulk_scroll"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+
             android:layout_weight="1"
-            app:srcCompat="@drawable/shirtstemp" />
+            app:srcCompat="@drawable/shulk_shirt" />
 
         <ImageView
-            android:id="@+id/imageView2.5"
+            android:id="@+id/av_ice_scroll"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+
             android:layout_weight="1"
-            app:srcCompat="@drawable/shirtstemp" />
+            app:srcCompat="@drawable/ice_shirt" />
     </LinearLayout>
 
 
