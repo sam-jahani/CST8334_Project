@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">World-Helping Kids</string>
     <string name="button">Done</string>
+    <string name="good_deed_message">Choose an Act of Kindness to Perform</string>
 </resources>

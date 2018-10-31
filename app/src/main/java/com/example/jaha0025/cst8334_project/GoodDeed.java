@@ -36,6 +36,7 @@ Next Screen
 
  */
 
+import android.content.ActivityNotFoundException;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
@@ -43,17 +44,21 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.provider.MediaStore;
+import android.speech.RecognitionService;
+import android.speech.RecognizerIntent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Random;
 
 
@@ -66,6 +71,7 @@ public class GoodDeed extends AppCompatActivity {
     public Cursor cursor;
     ActOfKindness act;
     MediaPlayer testSound2;
+    EditText editText;
 
 
     @Override
@@ -207,18 +213,65 @@ public class GoodDeed extends AppCompatActivity {
             }
         });
 
+         editText = findViewById(R.id.editText2);
+
+         ImageView microphone = findViewById(R.id.microphone);
+
+        microphone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+                intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+                intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.ENGLISH);
+                try{
+                    startActivityForResult(intent,200);
+                }catch (ActivityNotFoundException a){
+                    Toast.makeText(getApplicationContext(),"Intent problem", Toast.LENGTH_SHORT).show();
+                }
+
+               // editText.setText(result(0));
+            }
+        });
 
 
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            Bundle extras = data.getExtras();
-            Bitmap imageBitmap = (Bitmap) extras.get("data");
-            imageViewUpload.setImageBitmap(imageBitmap);
-        }
+
+
+            super.onActivityResult(requestCode, resultCode, data);
+
+            switch (requestCode) {
+
+                case (10): {
+                    // do this if request code is 10.
+                    if (requestCode == 10 && resultCode == RESULT_OK) {
+                        Bundle extras = data.getExtras();
+                        Bitmap imageBitmap = (Bitmap) extras.get("data");
+                        imageViewUpload.setImageBitmap(imageBitmap);
+                    }
+                }
+                break;
+
+                case (11):
+                {
+
+                        if (requestCode==11 &&resultCode == RESULT_OK && data != null) {
+                            ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+                            textView.setText(result.get(0));
+                        }
+                    }
+                break;
+            }
+
+
+
+
+
     }
+
+
 
     public void onPause(){
 
@@ -249,6 +302,33 @@ public class GoodDeed extends AppCompatActivity {
         }
 
 
+//        public void getSpeechInput(View view){
+//
+//            Intent intent = new Intent (RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+//
+//            intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+//            intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
+//
+//            startActivityForResult(intent,10);
+//
+//        }
+//
+//        @Override
+//        protected void onActivityResult(int requestCode, int resultCode, Intent data){
+//            super.onActivityResult(requestCode, resultCode, data);
+//
+//
+//            switch (requestCode) {
+//                case 10:
+//
+//                    if (requestCode == RESULT_OK && data != null) {
+//                        ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+//                        editText.setText(result.get(0));
+//                    }
+//                    break;
+//            }
+//
+//        }
 
     }
 }

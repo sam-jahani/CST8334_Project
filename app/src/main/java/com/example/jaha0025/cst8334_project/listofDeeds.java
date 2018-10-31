@@ -56,6 +56,8 @@ public class listofDeeds extends AppCompatActivity {
 //            act = ActDbAdapter.getActFromCursor(cursor);
 //            titleText.setText(act.aTitle);
 //        }
+
+        //THIS WILL GO TO HOME SCREEN
         ImageView homeButton = findViewById(R.id.homeButton2);
 
         homeButton.setOnClickListener(new View.OnClickListener() {
