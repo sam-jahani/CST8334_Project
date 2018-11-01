@@ -34,15 +34,18 @@ package com.example.jaha0025.cst8334_project;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MainMenu extends AppCompatActivity {
 
+    ImageView login_button;
     ImageView home_button;
     ImageView yellow_profile;
     ImageView purple_acts;
@@ -56,9 +59,11 @@ public class MainMenu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
-
+        Play();
 
         // insantiating images and buttons
+        login_button = findViewById(R.id.main_loginBtn);
+        login_button.setBackgroundColor(Color.TRANSPARENT);
         home_button = findViewById(R.id.imageView5);
         yellow_profile = findViewById(R.id.imageView7);
         purple_acts = findViewById(R.id.imageView8);
@@ -66,31 +71,38 @@ public class MainMenu extends AppCompatActivity {
       //  add = findViewById(R.id.add);
 
 
+        login_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myintent = new Intent(MainMenu.this, LoginPage.class);
+                startActivity(myintent);
+            }
+        });
         // on click listener to the home button (furthest left on the top)
         home_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
 
-                Intent myintent = new Intent(MainMenu.this, GoodDeed.class);
-                startActivity(myintent);
+//                Intent myintent = new Intent(MainMenu.this, GoodDeed.class);
+//                startActivity(myintent);
 
 
-//                AlertDialog alertDialog = new AlertDialog.Builder(MainMenu.this).create();
-//                alertDialog.setTitle("Maybe you clicked the wrong button ?");
-//                alertDialog.setMessage("You are already on the main menu screen");
-//                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-//                        new DialogInterface.OnClickListener() {
-//                            public void onClick(DialogInterface dialog, int which) {
-//
-//                                dialog.dismiss();
-////                                Intent myintent = new Intent(MainMenu.this, GoodDeed.class);
-////                                startActivity(myintent);
-//
-//                                //dialog.dismiss();
-//                            }
-//                        });
-//                alertDialog.show();
+                AlertDialog alertDialog = new AlertDialog.Builder(MainMenu.this).create();
+                alertDialog.setTitle("Maybe you clicked the wrong button ?");
+                alertDialog.setMessage("You are already on the main menu screen");
+                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                dialog.dismiss();
+//                                Intent myintent = new Intent(MainMenu.this, GoodDeed.class);
+//                                startActivity(myintent);
+
+                                //dialog.dismiss();
+                            }
+                        });
+                alertDialog.show();
 
             }
         });
@@ -154,10 +166,9 @@ The test audio is also played
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
 
-                                Intent myintent = new Intent(MainMenu.this, GoodDeed.class);
+                                Intent myintent = new Intent(MainMenu.this, listofDeeds.class);
                                 startActivityForResult(myintent,50);
 
-                                Play();
                                 dialog.dismiss();
                             }
                         });
@@ -217,7 +228,7 @@ The test audio is also played
         if(testSound == null){
 
             // instaniate the MediaPlayer object
-            testSound = MediaPlayer.create(this,R.raw.recording);
+            testSound = MediaPlayer.create(this,R.raw.testsound_mainmenu);
             //starting the recording
             testSound.start();
             // when the recording is finished release the MediaPlayer
@@ -225,7 +236,7 @@ The test audio is also played
                 @Override
                 public void onCompletion(MediaPlayer mediaPlayer) {
                     //this code actually releases the player
-                    testSound.release();
+                    testSound.start();
                 }
             });
         }
@@ -244,12 +255,21 @@ The test audio is also played
     in order to ensure that resources are not locked up
 
      */
+
+    @Override
+    protected void onPause(){
+//        testSound.release();
+        super.onPause();
+    }
+
     @Override
     public void onStop(){
 
-        //testSound.release();
+        testSound.release();
         super.onStop();
     }
+
+
 
 
 

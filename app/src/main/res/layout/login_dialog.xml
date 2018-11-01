@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/logDialogLogin"
+    android:background="@color/bgActs">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/logTxtNewLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Login: "
+            android:textSize="40dp"/>
+
+        <EditText
+            android:id="@+id/logEdtNewLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="New Login Name"/>
+
+        <TextView
+            android:id="@+id/logTxtNewPass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Password: "
+            android:textSize="40dp"/>
+
+        <EditText
+            android:id="@+id/logEdtNewPass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:hint="Password"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/logBtnBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Back"
+                android:layout_marginTop="20dp"/>
+
+            <Button
+                android:id="@+id/logBtnSubmit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Submit"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="20dp"/>
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+</RelativeLayout>

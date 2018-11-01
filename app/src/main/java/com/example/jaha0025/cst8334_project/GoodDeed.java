@@ -286,16 +286,19 @@ public class GoodDeed extends AppCompatActivity {
         if(testSound2 == null){
 
             // instaniate the MediaPlayer object
-            testSound2 = MediaPlayer.create(this,R.raw.testsound_mainmenu);
+            testSound2 = MediaPlayer.create(this,R.raw.aok_make_your_own);
             //starting the recording
             testSound2.start();
             // when the recording is finished release the MediaPlayer
+
             testSound2.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                 @Override
                 public void onCompletion(MediaPlayer mediaPlayer) {
                     //this code actually releases the player
-                    //testSound.release();
+
                     testSound2.start();
+
+
 
                 }
             });
