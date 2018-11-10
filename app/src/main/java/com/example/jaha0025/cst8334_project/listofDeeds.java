@@ -23,12 +23,15 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 
 public class listofDeeds extends AppCompatActivity {
-    public Cursor cursor;
+    Cursor cursor;
     ActOfKindness act;
     ListView listView;
     TextView titleText;
     MediaPlayer testSound3;
 
+    ArrayList<String> listItem;
+    ArrayAdapter adapter;
+    ActDbAdapter db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +42,8 @@ public class listofDeeds extends AppCompatActivity {
 
         Play();
 
+
+        listItem = new ArrayList<>();
 //        ArrayList<ActOfKindness> acts = ActOfKindness.insertActs(this);
 //        ActDbAdapter adapter = new ActDbAdapter(this);
 //        adapter.open();
@@ -97,8 +102,10 @@ public class listofDeeds extends AppCompatActivity {
 
         // ArrayAdapter adapter = new ArrayAdapter()
 
-        AokListAdapter adapter = new AokListAdapter(this, R.layout.adapter_view_layout, listofaok);
-        listView.setAdapter(adapter);
+//        AokListAdapter adapter = new AokListAdapter(this, R.layout.adapter_view_layout, listofaok);
+//        listView.setAdapter(adapter);
+
+        viewData();
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -168,6 +175,21 @@ public class listofDeeds extends AppCompatActivity {
 
                 }
             });
+        }
+    }
+
+    private void viewData(){
+        Cursor cursor = db.getActs();
+
+        if (cursor.getCount() == 0){
+            Toast.makeText(this, "No data to show", Toast.LENGTH_LONG).show();
+        }else{
+            while (cursor.moveToNext()){
+                listItem.add(cursor.getString(1));  // index 1 is name, index 0 is ID!
+            }
+
+            adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listItem);
+            listView.setAdapter(adapter);
         }
     }
 }

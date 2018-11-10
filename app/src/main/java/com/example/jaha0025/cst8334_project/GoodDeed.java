@@ -207,7 +207,7 @@ public class GoodDeed extends AppCompatActivity {
             public void onClick(View v) {
                 // Toast doneToast = Toast.makeText(getApplicationContext(),"Congratultions you have completed this Act of Kindness, I love you.", Toast.LENGTH_LONG);
                 //doneToast.show();
-                Toast.makeText(GoodDeed.this,"Congratultions you have completed this Act of Kindness, I love you.", Toast.LENGTH_LONG).show();
+                Toast.makeText(GoodDeed.this,"Congratulations you have completed this Act of Kindness!", Toast.LENGTH_LONG).show();
                 Intent k = new Intent(GoodDeed.this, listofDeeds.class);
                 startActivity(k);
             }
@@ -286,7 +286,7 @@ public class GoodDeed extends AppCompatActivity {
         if(testSound2 == null){
 
             // instaniate the MediaPlayer object
-            testSound2 = MediaPlayer.create(this,R.raw.aok_make_your_own);
+            testSound2 = MediaPlayer.create(this,R.raw.aok1);
             //starting the recording
             testSound2.start();
             // when the recording is finished release the MediaPlayer
@@ -296,7 +296,8 @@ public class GoodDeed extends AppCompatActivity {
                 public void onCompletion(MediaPlayer mediaPlayer) {
                     //this code actually releases the player
 
-                    testSound2.start();
+                    testSound2.release();
+
 
 
 

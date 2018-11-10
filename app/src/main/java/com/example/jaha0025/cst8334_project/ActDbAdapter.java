@@ -86,4 +86,12 @@ public class ActDbAdapter {
         act.aQuestion = cursor.getString(cursor.getColumnIndex(QUESTION));
         return act;
     }
+
+//    public Cursor viewData(){
+//        SQLiteDatabase db= this.getReadableDatabase();
+//        String query = "Select * from "+DB_TABLE;
+//        Cursor cursor =  db.rawQuery(query, null);
+//
+//        return cursor;
+//    }
 }
