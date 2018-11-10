@@ -147,7 +147,7 @@ public class ActDbAdapter {
 
     public long insertUser(ContentValues initialValues) {
 
-        
+
 
         return myDB.insertWithOnConflict(USER_TABLE, null,
                 initialValues, SQLiteDatabase.CONFLICT_IGNORE);

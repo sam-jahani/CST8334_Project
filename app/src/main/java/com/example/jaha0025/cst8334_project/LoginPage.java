@@ -34,6 +34,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -216,18 +217,23 @@ public class LoginPage extends AppCompatActivity {
 
                }
 
-               else{
+               else {
 
-                   Toast toast = Toast.makeText(getApplicationContext(), "User Created",Toast.LENGTH_LONG);
+                   Toast toast = Toast.makeText(getApplicationContext(), "User Created", Toast.LENGTH_LONG);
                    toast.show();
+                   Cursor cursor = adapter.getUsers();
+                   if (cursor.moveToFirst()) {
+                       do {
+
+                           User user1 = ActDbAdapter.getUserFromCursor(cursor);
+                           Log.i("users", user1.getuLogin());
+
+                       } while (cursor.moveToNext());
+                   }
 
                    Intent logIntentDialog = new Intent(LoginPage.this, LoginPage.class);
-                   startActivityForResult(logIntentDialog,50);
-
+                   startActivityForResult(logIntentDialog, 50);
                }
-
-
-
 
 
 
