@@ -14,6 +14,10 @@ public class UserCustomize extends AppCompatActivity {
 
     MediaPlayer testSound1;
     ImageView back;
+    ImageView shulkShirt;
+    ImageView shulkScroll;
+    ImageView iceShirt;
+    ImageView iceScroll;
     TextView head;
     TextView shirt;
     TextView pants;
@@ -29,6 +33,13 @@ public class UserCustomize extends AppCompatActivity {
         setContentView(R.layout.activity_user_customize);
 
         Play();
+
+        shulkShirt = findViewById(R.id.av_character_shulk);
+        shulkScroll = findViewById(R.id.av_shulk_scroll);
+
+        iceShirt = findViewById(R.id.av_character_ice);
+        iceScroll = findViewById(R.id.av_ice_scroll);
+
 
         back = findViewById(R.id.av_close);
         head  = findViewById(R.id.av_head_text);
@@ -72,7 +83,7 @@ public class UserCustomize extends AppCompatActivity {
                 shirt.setTextColor(Color.WHITE);
                 pants.setTextColor(Color.WHITE);
                 all.setTextColor(Color.WHITE);
-                
+
             }
         });
 
@@ -130,13 +141,30 @@ public class UserCustomize extends AppCompatActivity {
             }
         });
 
+        shulkScroll.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                shulkShirt.setVisibility(View.VISIBLE);
+                iceShirt.setVisibility(View.INVISIBLE);
+            }
+        });
+
+        iceScroll.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                iceShirt.setVisibility(View.VISIBLE);
+                shulkShirt.setVisibility(View.INVISIBLE);
+
+            }
+        });
+
     }
 
     public void Play() {
         if (testSound1 == null) {
 
             // instaniate the MediaPlayer object
-            testSound1 = MediaPlayer.create(this, R.raw.testsound_mainmenu);
+            testSound1 = MediaPlayer.create(this, R.raw.jermal_dearly_beloved);
             //            //starting the recording
             testSound1.start();
             // when the recording is finished release the MediaPlayer
