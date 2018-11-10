@@ -15,7 +15,7 @@ public class ActDbAdapter {
     private final static String ACT_TABLE = "ACT_TABLE";
     private final static String USER_TABLE = "USER_TABLE";
     private final static String USERACT_TABLE = "USERACT_TABLE";
-    private final static int DATABASE_VERSION = 1;
+    private final static int DATABASE_VERSION = 3;
     private static Context context;
     public static String TAG = ActDbAdapter.class.getSimpleName();
 
@@ -78,7 +78,7 @@ public class ActDbAdapter {
                     U_LOGIN + " ));";
 
     private static final String CREATE_TABLE_USERACT =
-            "create table " + ACT_TABLE + "(" +
+            "create table " + USERACT_TABLE + "(" +
                     KEY_ROWID_USERACT + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                     KEY_ROWID_USER + " INTEGER," +
                     KEY_ROWID_ACT + " INTEGER," +
@@ -142,12 +142,18 @@ public class ActDbAdapter {
     public long insertUserAct(ContentValues initialValues) {
         return myDB.insertWithOnConflict(USERACT_TABLE, null,
                 initialValues, SQLiteDatabase.CONFLICT_IGNORE);
+
     }
 
     public long insertUser(ContentValues initialValues) {
+
         
+
         return myDB.insertWithOnConflict(USER_TABLE, null,
-                initialValues, SQLiteDatabase.CONFLICT_FAIL);
+                initialValues, SQLiteDatabase.CONFLICT_IGNORE);
+
+
+
     }
 
     public Cursor getActs() {

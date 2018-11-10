@@ -187,7 +187,7 @@ public class LoginPage extends AppCompatActivity {
         final SharedPreferences logsharedPreference = getSharedPreferences("Login",MODE_PRIVATE);
         logNewLoginEdt.setText(logsharedPreference.getString("Default Login",""));
         logNewPassEdt.setText(logsharedPreference.getString("Password",""));
-
+        adapter.open();
 
         logSubmitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -204,12 +204,27 @@ public class LoginPage extends AppCompatActivity {
 
                  */
                 //open database
-                adapter.open();
+               // adapter.open();
                 //
                 ContentValues newValues = new ContentValues();
                 newValues.put(ActDbAdapter.U_LOGIN, logNewLoginEdt.getText().toString());
                 newValues.put(ActDbAdapter.U_PASS, logNewPassEdt.getText().toString());
-                adapter.insertUser(newValues);
+               if (adapter.insertUser(newValues) == -1)
+               {
+                   Toast toast = Toast.makeText(getApplicationContext(), "Login already exists",Toast.LENGTH_LONG);
+                   toast.show();
+
+               }
+
+               else{
+
+                   Toast toast = Toast.makeText(getApplicationContext(), "User Created",Toast.LENGTH_LONG);
+                   toast.show();
+
+                   Intent logIntentDialog = new Intent(LoginPage.this, LoginPage.class);
+                   startActivityForResult(logIntentDialog,50);
+
+               }
 
 
 
@@ -217,17 +232,10 @@ public class LoginPage extends AppCompatActivity {
 
 
 
-                Toast toast = Toast.makeText(getApplicationContext(), "User Created",Toast.LENGTH_LONG);
-
-                toast.show();
 
 
-
-
-
-
-                Intent logIntentDialog = new Intent(LoginPage.this, LoginPage.class);
-                startActivityForResult(logIntentDialog,50);
+                //Intent logIntentDialog = new Intent(LoginPage.this, LoginPage.class);
+                //startActivityForResult(logIntentDialog,50);
             }
         });
 
