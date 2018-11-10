@@ -74,7 +74,9 @@ public class ActDbAdapter {
                     U_NAME + " text," +
                     U_AGE + " INTEGER," +
                     U_GRADE + " text," +
-                    U_ABOUT + " text);";
+                    U_ABOUT + " text, CONSTRAINT login_unique UNIQUE (" +
+                    U_LOGIN + " ));";
+
     private static final String CREATE_TABLE_USERACT =
             "create table " + ACT_TABLE + "(" +
                     KEY_ROWID_USERACT + " INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -143,8 +145,9 @@ public class ActDbAdapter {
     }
 
     public long insertUser(ContentValues initialValues) {
+        
         return myDB.insertWithOnConflict(USER_TABLE, null,
-                initialValues, SQLiteDatabase.CONFLICT_IGNORE);
+                initialValues, SQLiteDatabase.CONFLICT_FAIL);
     }
 
     public Cursor getActs() {
