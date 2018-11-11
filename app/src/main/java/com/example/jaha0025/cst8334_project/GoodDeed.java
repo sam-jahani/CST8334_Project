@@ -37,21 +37,17 @@ Next Screen
  */
 
 import android.content.ActivityNotFoundException;
-import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.provider.MediaStore;
-import android.speech.RecognitionService;
 import android.speech.RecognizerIntent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.TypedValue;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -72,34 +68,40 @@ public class GoodDeed extends AppCompatActivity {
     ActOfKindness act;
     MediaPlayer testSound2;
     EditText editText;
+    int num;
+    String voice1;
+    int aoknum;
 
+    ImageView speechBut;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_good_deed);
 
-        Play();
+       // Play();
 
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         //sanmac
-        ArrayList<ActOfKindness> acts = ActOfKindness.insertActs(this);
+       // ArrayList<ActOfKindness> acts = ActOfKindness.insertActs(this);
         ActDbAdapter adapter = new ActDbAdapter(this);
         adapter.open();
-        for(ActOfKindness act : acts) {
+        /*for(ActOfKindness act : acts) {
             ContentValues newValues = new ContentValues();
             newValues.put(ActDbAdapter.TITLE, act.aTitle);
             newValues.put(ActDbAdapter.DESCRIPTION, act.aDescription);
             newValues.put(ActDbAdapter.QUESTION, act.aQuestion);
             adapter.insertAct(newValues);
-        }
+        }*/
         cursor = adapter.getActs();
         textView = findViewById(R.id.textView);
         textView2 = findViewById(R.id.textView2);
         textView3 = findViewById(R.id.textView3);
-
+        String id = getIntent().getExtras().getString("ID");
         if(cursor.moveToFirst()){
+            cursor.move(Integer.parseInt(id));
             act = ActDbAdapter.getActFromCursor(cursor);
+
 
             textView.setText(act.aDescription);
             textView2.setText(act.aQuestion);
@@ -233,6 +235,18 @@ public class GoodDeed extends AppCompatActivity {
             }
         });
 
+        speechBut = findViewById(R.id.speechBut);
+        String Aokid = getIntent().getExtras().getString("ID");
+        final int intAOK = Integer.parseInt(Aokid);
+
+        speechBut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                managerOfSound(intAOK);
+            } // END onClick()
+        }); // END buttonHello
+
+       // aoknum =
 
     }
 
@@ -273,35 +287,43 @@ public class GoodDeed extends AppCompatActivity {
 
 
 
-    public void onPause(){
+    public void onStop(){
 
         testSound2.release();
-        super.onPause();
+        super.onStop();
 
     }
 
     public void Play(){
 
-
+        String id = getIntent().getExtras().getString("ID");
         if(testSound2 == null){
 
-            // instaniate the MediaPlayer object
-            testSound2 = MediaPlayer.create(this,R.raw.aok_make_your_own);
-            //starting the recording
-            testSound2.start();
-            // when the recording is finished release the MediaPlayer
+           // if(cursor.move(0)){
 
-            testSound2.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                @Override
-                public void onCompletion(MediaPlayer mediaPlayer) {
-                    //this code actually releases the player
+                // instaniate the MediaPlayer object
+                testSound2 = MediaPlayer.create(this,R.raw.aok_make_your_own);
+                //starting the recording
+                testSound2.start();
+                // when the recording is finished release the MediaPlayer
 
-                    testSound2.start();
+                testSound2.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mediaPlayer) {
+                        //this code actually releases the player
+
+                        testSound2.start();
 
 
 
-                }
-            });
+                    }
+                });
+
+
+
+
+
+
         }
 
 
@@ -332,6 +354,67 @@ public class GoodDeed extends AppCompatActivity {
 //            }
 //
 //        }
+
+    }
+
+    protected void managerOfSound(int aoknum) {
+        //String id = getIntent().getExtras().getString("ID");
+
+        //aoknum = Integer.parseInt(id);
+
+        if (testSound2!=null) {
+            testSound2.reset();
+            testSound2.release();
+        }
+        switch (aoknum){
+            case 0:
+                testSound2 = MediaPlayer.create(this, R.raw.aok_make_your_own);
+                break;
+
+            case 1:
+                testSound2 = MediaPlayer.create(this, R.raw.aok2_charity_donation_jar);
+                break;
+
+            case 2:
+                testSound2 = MediaPlayer.create(this, R.raw.aok_3);
+                break;
+            case 3:
+                testSound2 = MediaPlayer.create(this, R.raw.aok_4);
+                break;
+            case 4:
+                testSound2 = MediaPlayer.create(this, R.raw.aok_5);
+                break;
+            case 5:
+                testSound2 = MediaPlayer.create(this, R.raw.aok_6);
+                break;
+            case 6:
+                testSound2 = MediaPlayer.create(this, R.raw.aok_7);
+                break;
+            case 7:
+                testSound2 = MediaPlayer.create(this, R.raw.aok_8);
+                break;
+            case 8:
+                testSound2 = MediaPlayer.create(this, R.raw.aok_9);
+                break;
+            case 9:
+                testSound2 = MediaPlayer.create(this, R.raw.aok_10);
+                break;
+            default:
+                testSound2 = MediaPlayer.create(this, R.raw.recording);
+        }
+
+
+//
+//        if (aoknum==0)
+//            testSound2 = MediaPlayer.create(this, R.raw.aok_make_your_own);
+//        else if (aoknum == 1)
+//            testSound2 = MediaPlayer.create(this, R.raw.aok2_charity_donation_jar);
+//        else
+//            testSound2 = MediaPlayer.create(this, R.raw.recording);
+        testSound2.start();
+       // testSound2.release();
+       // super.onPause();
+
 
     }
 }

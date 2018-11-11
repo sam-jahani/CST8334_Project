@@ -69,21 +69,35 @@ public class listofDeeds extends AppCompatActivity {
         });
 
 
-        ListView listView = findViewById(R.id.listview);
+        listView = findViewById(R.id.listview);
 
-        ActsofK aok1 = new ActsofK("1", "Your Own Act of Kindness");
-        ActsofK aok2 = new ActsofK("2", "Welcome a Neighbour");
-        ActsofK aok3 = new ActsofK("3", "Card for Your Letter Carrier");
-        ActsofK aok4 = new ActsofK("4", "Share With Friends");
-        ActsofK aok5 = new ActsofK("5", "Local Bookstore");
-        ActsofK aok6 = new ActsofK("6", "Card For Your Doctor");
-        ActsofK aok7 = new ActsofK("7", "Deliver Dinner");
-        ActsofK aok8 = new ActsofK("8", " Cashier’s Name");
-        ActsofK aok9 = new ActsofK("9", "Library");
-        ActsofK aok10 = new ActsofK("10", "Charity Donation Jar");
+        ActsofK aok1 = new ActsofK("0", "Your Own Act of Kindness");
+        ActsofK aok2 = new ActsofK("1", "Charity Donation Jar");
+        ActsofK aok3 = new ActsofK("2", "Welcome a Neighbour");
+        ActsofK aok4 = new ActsofK("3", "Card for Your Letter Carrier");
+        ActsofK aok5 = new ActsofK("4", "Share With Friends");
+        ActsofK aok6 = new ActsofK("5", "Local Bookstore");
+        ActsofK aok7 = new ActsofK("6", "Card For Your Doctor");
+        ActsofK aok8 = new ActsofK("7", "Deliver Dinner");
+        ActsofK aok9 = new ActsofK("8", " Cashier’s Name");
+        ActsofK aok10 = new ActsofK("9", "Library");
 
+       // ActsofK aok11 = new ActsofK("10", "Charity Donation Jar");
+//
+//        Your Own Act of Kindness
+//        Charity Donation Jar
+//        Welcome a Neighbour
+//        Card for Your Letter Carrier
+//        Share With Friends
+//        Local Bookstore
+//        Card For Your Doctor
+//        Deliver Dinner
+//        Cashier’s Name
+//        Library
 
         ArrayList<ActsofK> listofaok = new ArrayList<>();
+
+
         listofaok.add(aok1);
         listofaok.add(aok2);
         listofaok.add(aok3);
@@ -103,7 +117,13 @@ public class listofDeeds extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+
+
                 Intent k = new Intent(listofDeeds.this, GoodDeed.class);
+                ActsofK aok = (ActsofK) listView.getItemAtPosition(position);
+                //k.putExtra(text,GoodDeed.class);
+                k.putExtra("ID", aok.getId());
                 startActivity(k);
             }
         });

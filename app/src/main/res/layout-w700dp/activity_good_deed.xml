@@ -102,7 +102,7 @@
             android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/doneBut"
-            app:layout_constraintStart_toStartOf="@+id/imageView12"
+            app:layout_constraintStart_toStartOf="@+id/speechBut"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
             app:layout_constraintVertical_bias="1.0"
             app:srcCompat="@drawable/bee_talking" />
@@ -266,7 +266,7 @@
             app:srcCompat="@drawable/voice_icon" />
 
         <ImageView
-            android:id="@+id/imageView12"
+            android:id="@+id/speechBut"
             android:layout_width="102dp"
             android:layout_height="108dp"
             android:layout_marginTop="8dp"
