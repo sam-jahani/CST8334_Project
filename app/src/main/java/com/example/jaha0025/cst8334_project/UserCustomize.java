@@ -18,14 +18,41 @@ public class UserCustomize extends AppCompatActivity {
     ImageView shulkScroll;
     ImageView iceShirt;
     ImageView iceScroll;
+    ImageView pinkShirt;
+    ImageView pinkScroll;
+    ImageView pants1;
+    ImageView pants1Scroll;
+    ImageView pants2;
+    ImageView pants2Scroll;
+    ImageView pants3;
+    ImageView pants3Scroll;
+    ImageView skinTone1;
+    ImageView skinTone2;
+    ImageView star1;
+    ImageView star2;
+    ImageView avatar1;
+    ImageView avatar2;
+    ImageView baldChoco;
+    ImageView baldChocoHeadScroll;
+    ImageView vanill;
+    ImageView vanillaHeadScroll;
+    ImageView blondeGirl;
+    ImageView blondeGirlScroll;
+    ImageView chocoHair;
+    ImageView chocoHairScroll;
     TextView head;
+   // TextView head2;
     TextView shirt;
     TextView pants;
     TextView all;
-    ScrollView headScroll;
+    ScrollView headScroll1;
+    ScrollView headScroll2;
     ScrollView shirtScroll;
     ScrollView pantsScroll;
     ScrollView allScroll;
+    String currentSkinTone;
+    int tone;
+    boolean clicked;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,16 +61,66 @@ public class UserCustomize extends AppCompatActivity {
 
         Play();
 
+        //avatar
+        avatar1 = findViewById(R.id.av_character);
+      // avatar2 = findViewById(R.id.av_character2);
+
+        //skin tones
+        skinTone1 = findViewById(R.id.av_skin_tone_1);
+        skinTone2 = findViewById(R.id.av_skin_tone_2);
+
+        star1 = findViewById(R.id.av_skin_tone_1_star);
+        star2 = findViewById(R.id.av_skin_tone_2_star);
+
+        //shirts
+
         shulkShirt = findViewById(R.id.av_character_shulk);
         shulkScroll = findViewById(R.id.av_shulk_scroll);
 
         iceShirt = findViewById(R.id.av_character_ice);
         iceScroll = findViewById(R.id.av_ice_scroll);
 
+        pinkShirt = findViewById(R.id.av_character_pink);
+        pinkScroll = findViewById(R.id.av_pink_scroll);
 
+        //pants
+        pants1 = findViewById(R.id.av_character_pants1);
+        pants1Scroll = findViewById(R.id.av_Pants1_Scroll);
+
+        pants2 = findViewById(R.id.av_character_pants2);
+        pants2Scroll = findViewById(R.id.av_Pants2_Scroll);
+
+        pants3 = findViewById(R.id.av_character_pants3);
+        pants3Scroll = findViewById(R.id.av_Pants3_Scroll);
+
+
+        //heads
+        baldChoco = findViewById(R.id.aligned_bald_choco);
+        baldChocoHeadScroll = findViewById(R.id.av_bald_choco_scroll);
+
+        vanill = findViewById(R.id.av_character);
+        vanillaHeadScroll = findViewById(R.id.av_vanill_Scroll);
+
+        blondeGirl = findViewById(R.id.aligned_blondegirl);
+        blondeGirlScroll = findViewById(R.id.blondGirlScroll);
+
+        chocoHair = findViewById(R.id.aligned_choco_hair);
+        chocoHairScroll = findViewById(R.id.chocoHairHead);
+
+
+        //back button
         back = findViewById(R.id.av_close);
+
+        //text headers
         head  = findViewById(R.id.av_head_text);
         head.setTextColor(Color.WHITE);
+
+      //  head2 = findViewById(R.id.av_head_text2);
+      //  head2.setTextColor(Color.RED);
+       // head2.setVisibility(View.INVISIBLE);
+
+
+
 
         shirt = findViewById(R.id.av_shirt_text);
         shirt.setTextColor(Color.WHITE);
@@ -54,7 +131,8 @@ public class UserCustomize extends AppCompatActivity {
         all = findViewById(R.id.av_all_text);
         all.setTextColor(Color.WHITE);
 
-        headScroll = findViewById(R.id.av_head_scrollview);
+        headScroll1 = findViewById(R.id.av_head_scrollview1);
+        headScroll2 = findViewById(R.id.av_head_scrollview2);
         shirtScroll = findViewById(R.id.av_shirt_scrollview);
         pantsScroll = findViewById(R.id.av_pants_scrollview);
         allScroll = findViewById(R.id.av_all_scrollview);
@@ -69,20 +147,45 @@ public class UserCustomize extends AppCompatActivity {
         });
 
 
+        //header logic
         head.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                headScroll.setVisibility(View.VISIBLE);
-                headScroll.scrollTo(0,0);
-                head.setTextColor(Color.RED);
+                clicked = true;
+                if (tone == 2) {
+                    headScroll1.setVisibility(View.INVISIBLE);
+                    headScroll2.setVisibility(View.VISIBLE);
+                    headScroll2.scrollTo(0, 0);
+                    head.setTextColor(Color.RED);
 
-                shirtScroll.setVisibility(View.INVISIBLE);
-                pantsScroll.setVisibility(View.INVISIBLE);
-                allScroll.setVisibility(View.INVISIBLE);
+                    shirtScroll.setVisibility(View.INVISIBLE);
+                    pantsScroll.setVisibility(View.INVISIBLE);
+                    allScroll.setVisibility(View.INVISIBLE);
 
-                shirt.setTextColor(Color.WHITE);
-                pants.setTextColor(Color.WHITE);
-                all.setTextColor(Color.WHITE);
+                    // head2.setVisibility(View.INVISIBLE);
+
+                    shirt.setTextColor(Color.WHITE);
+                    pants.setTextColor(Color.WHITE);
+                    all.setTextColor(Color.WHITE);
+
+
+                }else{
+                    headScroll2.setVisibility(View.INVISIBLE);
+                    headScroll1.setVisibility(View.VISIBLE);
+                    headScroll1.scrollTo(0, 0);
+                    head.setTextColor(Color.RED);
+
+                    shirtScroll.setVisibility(View.INVISIBLE);
+                    pantsScroll.setVisibility(View.INVISIBLE);
+                    allScroll.setVisibility(View.INVISIBLE);
+                    // headScroll2.setVisibility(View.INVISIBLE);
+                    // head2.setVisibility(View.INVISIBLE);
+
+                    shirt.setTextColor(Color.WHITE);
+                    pants.setTextColor(Color.WHITE);
+                    all.setTextColor(Color.WHITE);
+
+                }
 
             }
         });
@@ -90,13 +193,16 @@ public class UserCustomize extends AppCompatActivity {
         shirt.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
+                clicked = false;
                 shirtScroll.setVisibility(View.VISIBLE);
                 shirtScroll.scrollTo(0,0);
                 shirt.setTextColor(Color.RED);
 
-                headScroll.setVisibility(View.INVISIBLE);
+                headScroll1.setVisibility(View.INVISIBLE);
+                headScroll2.setVisibility(View.INVISIBLE);
                 pantsScroll.setVisibility(View.INVISIBLE);
                 allScroll.setVisibility(View.INVISIBLE);
+
 
                 head.setTextColor(Color.WHITE);
                 pants.setTextColor(Color.WHITE);
@@ -108,15 +214,18 @@ public class UserCustomize extends AppCompatActivity {
         pants.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
+                clicked = false;
                 pantsScroll.setVisibility(View.VISIBLE);
                 pantsScroll.scrollTo(0,0);
                 pants.setTextColor(Color.RED);
 
-                headScroll.setVisibility(View.INVISIBLE);
+                headScroll1.setVisibility(View.INVISIBLE);
+                headScroll2.setVisibility(View.INVISIBLE);
                 shirtScroll.setVisibility(View.INVISIBLE);
                 allScroll.setVisibility(View.INVISIBLE);
 
                 head.setTextColor(Color.WHITE);
+              //  head2.setTextColor(Color.WHITE);
                 shirt.setTextColor(Color.WHITE);
                 all.setTextColor(Color.WHITE);
 
@@ -126,26 +235,32 @@ public class UserCustomize extends AppCompatActivity {
         all.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
+                clicked = false;
                 allScroll.setVisibility(View.VISIBLE);
                 allScroll.scrollTo(0,0);
                 all.setTextColor(Color.RED);
 
-                headScroll.setVisibility(View.INVISIBLE);
+                headScroll1.setVisibility(View.INVISIBLE);
+                headScroll2.setVisibility(View.INVISIBLE);
                 shirtScroll.setVisibility(View.INVISIBLE);
                 pantsScroll.setVisibility(View.INVISIBLE);
 
                 head.setTextColor(Color.WHITE);
+             //   head2.setTextColor(Color.WHITE);
                 shirt.setTextColor(Color.WHITE);
                 pants.setTextColor(Color.WHITE);
 
             }
         });
 
+        //shirts logic
         shulkScroll.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                shulkShirt.setVisibility(View.VISIBLE);
+
                iceShirt.setVisibility(View.INVISIBLE);
+               pinkShirt.setVisibility(View.INVISIBLE);
             }
         });
 
@@ -153,8 +268,141 @@ public class UserCustomize extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 iceShirt.setVisibility(View.VISIBLE);
+
+                shulkShirt.setVisibility(View.INVISIBLE);
+                pinkShirt.setVisibility(View.INVISIBLE);
+
+            }
+        });
+
+        pinkScroll.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                pinkShirt.setVisibility(View.VISIBLE);
+
+                iceShirt.setVisibility(View.INVISIBLE);
                 shulkShirt.setVisibility(View.INVISIBLE);
 
+            }
+        });
+
+        //pants logic
+        pants1Scroll.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                pants1.setVisibility(View.VISIBLE);
+
+                pants2.setVisibility(View.INVISIBLE);
+                pants3.setVisibility(View.INVISIBLE);
+
+            }
+        });
+
+        pants2Scroll.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                pants2.setVisibility(View.VISIBLE);
+
+                pants1.setVisibility(View.INVISIBLE);
+                pants3.setVisibility(View.INVISIBLE);
+
+            }
+        });
+
+        pants3Scroll.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                pants3.setVisibility(View.VISIBLE);
+
+                pants1.setVisibility(View.INVISIBLE);
+                pants2.setVisibility(View.INVISIBLE);
+
+            }
+        });
+
+        //skin tones logic
+        skinTone1.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                star1.setVisibility(View.VISIBLE);
+                star2.setVisibility(View.INVISIBLE);
+
+               // avatar1.setVisibility(View.VISIBLE);
+              //  avatar2.setVisibility(View.INVISIBLE);
+
+                tone = 1;
+
+                if(clicked == true){
+                    head.performClick();
+                }
+
+            }
+        });
+
+        skinTone2.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                star2.setVisibility(View.VISIBLE);
+                star1.setVisibility(View.INVISIBLE);
+
+              //  avatar1.setVisibility(View.INVISIBLE);
+              //  avatar2.setVisibility(View.VISIBLE);
+
+                tone = 2;
+
+                if(clicked == true){
+                    head.performClick();
+                }
+
+            }
+        });
+
+        vanillaHeadScroll.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+
+                vanill.setVisibility(View.VISIBLE);
+
+                baldChoco.setVisibility(View.INVISIBLE);
+                blondeGirl.setVisibility(View.INVISIBLE);
+                chocoHair.setVisibility(View.INVISIBLE);
+
+            }
+        });
+
+        baldChocoHeadScroll.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+
+                baldChoco.setVisibility(View.VISIBLE);
+
+                vanill.setVisibility(View.INVISIBLE);
+                blondeGirl.setVisibility(View.INVISIBLE);
+                chocoHair.setVisibility(View.INVISIBLE);
+            }
+        });
+
+        blondeGirlScroll.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+
+                blondeGirl.setVisibility(View.VISIBLE);
+
+                vanill.setVisibility(View.INVISIBLE);
+                baldChoco.setVisibility(View.INVISIBLE);
+                chocoHair.setVisibility(View.INVISIBLE);
+            }
+        });
+
+        chocoHairScroll.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+
+                chocoHair.setVisibility(View.VISIBLE);
+
+                vanill.setVisibility(View.INVISIBLE);
+                baldChoco.setVisibility(View.INVISIBLE);
+                blondeGirl.setVisibility(View.INVISIBLE);
             }
         });
 
@@ -183,6 +431,10 @@ public class UserCustomize extends AppCompatActivity {
     public void onPause(){
         testSound1.release();
         super.onPause();
+    }
+
+    public void onStart(){
+        super.onStart();
     }
 }
 
