@@ -1,5 +1,3 @@
-
-
 package com.example.jaha0025.cst8334_project;
 
 
@@ -31,10 +29,12 @@ Next Screen
 
 
 import android.app.Dialog;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -74,6 +74,8 @@ public class LoginPage extends AppCompatActivity {
 
     Button logBackBtn;
     Button logSubmitBtn;
+    ActDbAdapter adapter;
+
 
 
     @Override
@@ -81,6 +83,10 @@ public class LoginPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_page);
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+
+        //declaring adapter
+        adapter = new ActDbAdapter(this);
+
 
         logTitleImg = (ImageView) findViewById(R.id.logImgTitle);
 
@@ -182,21 +188,70 @@ public class LoginPage extends AppCompatActivity {
         final SharedPreferences logsharedPreference = getSharedPreferences("Login",MODE_PRIVATE);
         logNewLoginEdt.setText(logsharedPreference.getString("Default Login",""));
         logNewPassEdt.setText(logsharedPreference.getString("Password",""));
-
+        adapter.open();
 
         logSubmitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                /*
 
-                Toast toast = Toast.makeText(getApplicationContext(), "User Created",Toast.LENGTH_LONG);
-                toast.show();
+                  Logic needs to be placed in this area in order to do the following:
 
-                Intent logIntentDialog = new Intent(LoginPage.this, LoginPage.class);
-                startActivityForResult(logIntentDialog,50);
+                   -> determine if the login is currently being used
+
+
+                         -> 1 method for db connection / query
+
+
+                 */
+                //open database
+               // adapter.open();
+                //
+                ContentValues newValues = new ContentValues();
+                newValues.put(ActDbAdapter.U_LOGIN, logNewLoginEdt.getText().toString());
+                newValues.put(ActDbAdapter.U_PASS, logNewPassEdt.getText().toString());
+               if (adapter.insertUser(newValues) == -1)
+               {
+                   Toast toast = Toast.makeText(getApplicationContext(), "Login already exists",Toast.LENGTH_LONG);
+                   toast.show();
+
+               }
+
+               else {
+
+                   Toast toast = Toast.makeText(getApplicationContext(), "User Created", Toast.LENGTH_LONG);
+                   toast.show();
+                   Cursor cursor = adapter.getUsers();
+                   if (cursor.moveToFirst()) {
+                       do {
+
+                           User user1 = ActDbAdapter.getUserFromCursor(cursor);
+                           Log.i("users", user1.getuLogin());
+
+                       } while (cursor.moveToNext());
+                   }
+
+                   Intent logIntentDialog = new Intent(LoginPage.this, LoginPage.class);
+                   startActivityForResult(logIntentDialog, 50);
+               }
+
+
+
+
+
+
+                //Intent logIntentDialog = new Intent(LoginPage.this, LoginPage.class);
+                //startActivityForResult(logIntentDialog,50);
             }
         });
 
     }
+
+
+
+
+
+
 
     @Override
     protected void onResume(){
