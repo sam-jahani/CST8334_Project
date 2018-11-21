@@ -6,9 +6,7 @@ package com.example.jaha0025.cst8334_project;
 **************************************
 Functions of this Screen
 ******************************
-
  This is the GoodDeed Screen ( There will be 52 versions of this Screen each with a seperated good deed)
-
     -> User can request the audio version of the good deed
     -> User can submit pictures / text of the Good Deed
     -> User can check it off as done
@@ -16,7 +14,6 @@ Functions of this Screen
     -> User can go back to CascadingGoodDeeds
     -> User can go to the Shop Screen
     -> Go Back to the main menu screen
-
 Components
 ************
 -> Speech to Text
@@ -24,16 +21,11 @@ Components
 -> Audio
 -> Database Connection
     ->  Storing Audio, Text , and Visuals to the Database
-
 Next Screen
 ************
 ->MainMenu (User Clicks Back)
 ->CascadingGoodDeed (The selected Good Deed)
 -> Shop
-
-
-
-
  */
 
 import android.content.ActivityNotFoundException;
@@ -79,11 +71,11 @@ public class GoodDeed extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_good_deed);
 
-       // Play();
+        // Play();
 
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         //sanmac
-       // ArrayList<ActOfKindness> acts = ActOfKindness.insertActs(this);
+        // ArrayList<ActOfKindness> acts = ActOfKindness.insertActs(this);
         ActDbAdapter adapter = new ActDbAdapter(this);
         adapter.open();
         /*for(ActOfKindness act : acts) {
@@ -125,8 +117,8 @@ public class GoodDeed extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                    if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-                        startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+                if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+                    startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
                 }
             }
         });
@@ -215,9 +207,9 @@ public class GoodDeed extends AppCompatActivity {
             }
         });
 
-         editText = findViewById(R.id.editText2);
+        editText = findViewById(R.id.editText2);
 
-         ImageView microphone = findViewById(R.id.microphone);
+        ImageView microphone = findViewById(R.id.microphone);
 
         microphone.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -231,7 +223,7 @@ public class GoodDeed extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"Intent problem", Toast.LENGTH_SHORT).show();
                 }
 
-               // editText.setText(result(0));
+                // editText.setText(result(0));
             }
         });
 
@@ -246,7 +238,7 @@ public class GoodDeed extends AppCompatActivity {
             } // END onClick()
         }); // END buttonHello
 
-       // aoknum =
+        // aoknum =
 
     }
 
@@ -254,30 +246,30 @@ public class GoodDeed extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
 
-            super.onActivityResult(requestCode, resultCode, data);
+        super.onActivityResult(requestCode, resultCode, data);
 
-            switch (requestCode) {
+        switch (requestCode) {
 
-                case (10): {
-                    // do this if request code is 10.
-                    if (requestCode == 10 && resultCode == RESULT_OK) {
-                        Bundle extras = data.getExtras();
-                        Bitmap imageBitmap = (Bitmap) extras.get("data");
-                        imageViewUpload.setImageBitmap(imageBitmap);
-                    }
+            case (10): {
+                // do this if request code is 10.
+                if (requestCode == 10 && resultCode == RESULT_OK) {
+                    Bundle extras = data.getExtras();
+                    Bitmap imageBitmap = (Bitmap) extras.get("data");
+                    imageViewUpload.setImageBitmap(imageBitmap);
                 }
-                break;
-
-                case (11):
-                {
-
-                        if (requestCode==11 &&resultCode == RESULT_OK && data != null) {
-                            ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
-                            textView.setText(result.get(0));
-                        }
-                    }
-                break;
             }
+            break;
+
+            case (11):
+            {
+
+                if (requestCode==11 &&resultCode == RESULT_OK && data != null) {
+                    ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+                    textView.setText(result.get(0));
+                }
+            }
+            break;
+        }
 
 
 
@@ -299,25 +291,25 @@ public class GoodDeed extends AppCompatActivity {
         String id = getIntent().getExtras().getString("ID");
         if(testSound2 == null){
 
-           // if(cursor.move(0)){
+            // if(cursor.move(0)){
 
-                // instaniate the MediaPlayer object
-                testSound2 = MediaPlayer.create(this,R.raw.aok_make_your_own);
-                //starting the recording
-                testSound2.start();
-                // when the recording is finished release the MediaPlayer
+            // instaniate the MediaPlayer object
+            testSound2 = MediaPlayer.create(this,R.raw.aok_make_your_own);
+            //starting the recording
+            testSound2.start();
+            // when the recording is finished release the MediaPlayer
 
-                testSound2.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                    @Override
-                    public void onCompletion(MediaPlayer mediaPlayer) {
-                        //this code actually releases the player
+            testSound2.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mediaPlayer) {
+                    //this code actually releases the player
 
-                        testSound2.start();
+                    testSound2.start();
 
 
 
-                    }
-                });
+                }
+            });
 
 
 
@@ -412,8 +404,8 @@ public class GoodDeed extends AppCompatActivity {
 //        else
 //            testSound2 = MediaPlayer.create(this, R.raw.recording);
         testSound2.start();
-       // testSound2.release();
-       // super.onPause();
+        // testSound2.release();
+        // super.onPause();
 
 
     }
