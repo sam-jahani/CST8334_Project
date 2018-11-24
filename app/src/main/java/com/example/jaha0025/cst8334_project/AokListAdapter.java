@@ -29,8 +29,9 @@ public class AokListAdapter extends ArrayAdapter<ActsofK> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
        String id = getItem(position).getId();
        String aokTitle= getItem(position).getAokTitle();
+       String completed = getItem(position).getCompleted();
 
-       ActsofK aok = new ActsofK(id, aokTitle);
+       ActsofK aok = new ActsofK(id, aokTitle, completed);
 
         LayoutInflater inflater = LayoutInflater.from(mContext);
         convertView = inflater.inflate(mResource, parent, false);
@@ -39,7 +40,7 @@ public class AokListAdapter extends ArrayAdapter<ActsofK> {
         TextView tvaoks = convertView.findViewById(R.id.aok);
 
 
-        tvid.setText(id);
+        tvid.setText(completed);
         tvaoks.setText(aokTitle);
 
         return  convertView;
