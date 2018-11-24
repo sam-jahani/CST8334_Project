@@ -1,6 +1,7 @@
 package com.example.jaha0025.cst8334_project;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -53,11 +54,22 @@ public class UserCustomize extends AppCompatActivity {
     String currentSkinTone;
     int tone;
     boolean clicked;
+    User user;
+    int uid;
+    ActDbAdapter adapter;
+    Cursor curse;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_customize);
+
+        adapter = new ActDbAdapter(this);
+        adapter.open();
+        MyApplication myApp = (MyApplication)getApplication();
+        uid = myApp.getUserId();
+        curse = adapter.getUser(uid);
+
 
         Play();
 
@@ -138,11 +150,145 @@ public class UserCustomize extends AppCompatActivity {
         allScroll = findViewById(R.id.av_all_scrollview);
 
 
+        //DB goodies
+        if(curse.moveToFirst())
+        {
+            user = ActDbAdapter.getUserFromCursor(curse);
+        }
+
+        //seperate switch blocks for each customizable item
+        //set int value whenever user clicks on the item
+        //the avatar is updated whenever the user backs out of the application
+        //the avatar is loaded in onCreate when the screen is opened up and sets visibility depending on DB int values
+        switch (user.getuShirt())
+        {
+            case 1:
+                shulkShirt.setVisibility(View.VISIBLE);
+
+
+                iceShirt.setVisibility(View.INVISIBLE);
+                pinkShirt.setVisibility(View.INVISIBLE);
+                break;
+            case 2:
+
+                pinkShirt.setVisibility(View.VISIBLE);
+
+
+                iceShirt.setVisibility(View.INVISIBLE);
+                shulkShirt.setVisibility(View.INVISIBLE);
+
+                break;
+
+            case 3:
+
+                iceShirt.setVisibility(View.VISIBLE);
+
+
+                shulkShirt.setVisibility(View.INVISIBLE);
+                pinkShirt.setVisibility(View.INVISIBLE);
+
+                break;
+
+
+            default:
+
+        }
+
+        switch (user.getuHead())
+        {
+            case 1:
+
+                vanill.setVisibility(View.VISIBLE);
+
+
+                baldChoco.setVisibility(View.INVISIBLE);
+                blondeGirl.setVisibility(View.INVISIBLE);
+                chocoHair.setVisibility(View.INVISIBLE);
+
+                break;
+
+            case 2:
+
+                blondeGirl.setVisibility(View.VISIBLE);
+
+
+                vanill.setVisibility(View.INVISIBLE);
+                baldChoco.setVisibility(View.INVISIBLE);
+                chocoHair.setVisibility(View.INVISIBLE);
+
+                break;
+
+            case 3:
+
+                baldChoco.setVisibility(View.VISIBLE);
+                user.setuHead(3);
+
+                vanill.setVisibility(View.INVISIBLE);
+                blondeGirl.setVisibility(View.INVISIBLE);
+                chocoHair.setVisibility(View.INVISIBLE);
+
+                break;
+
+            case 4:
+
+                chocoHair.setVisibility(View.VISIBLE);
+                user.setuHead(4);
+
+                vanill.setVisibility(View.INVISIBLE);
+                baldChoco.setVisibility(View.INVISIBLE);
+                blondeGirl.setVisibility(View.INVISIBLE);
+
+                break;
+
+            default:
+                vanill.setVisibility(View.VISIBLE);
+        }
+
+        switch(user.getuPants())
+        {
+            case 1:
+
+                pants1.setVisibility(View.VISIBLE);
+
+
+                pants2.setVisibility(View.INVISIBLE);
+                pants3.setVisibility(View.INVISIBLE);
+
+                break;
+
+            case 2:
+
+                pants2.setVisibility(View.VISIBLE);
+
+
+                pants1.setVisibility(View.INVISIBLE);
+                pants3.setVisibility(View.INVISIBLE);
+
+                break;
+
+            case 3:
+
+                pants3.setVisibility(View.VISIBLE);
+                user.setuPants(3);
+
+                pants1.setVisibility(View.INVISIBLE);
+                pants2.setVisibility(View.INVISIBLE);
+
+                break;
+
+            default:
+                pants1.setVisibility(View.VISIBLE);
+
+        }
+
+
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(UserCustomize.this, UserProfile.class);
                 startActivity(intent);
+
+                adapter.updateAvatar(user);
             }
         });
 
@@ -258,6 +404,7 @@ public class UserCustomize extends AppCompatActivity {
             @Override
             public void onClick(View v){
                shulkShirt.setVisibility(View.VISIBLE);
+               user.setuShirt(1);
 
                iceShirt.setVisibility(View.INVISIBLE);
                pinkShirt.setVisibility(View.INVISIBLE);
@@ -268,6 +415,7 @@ public class UserCustomize extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 iceShirt.setVisibility(View.VISIBLE);
+                user.setuShirt(3);
 
                 shulkShirt.setVisibility(View.INVISIBLE);
                 pinkShirt.setVisibility(View.INVISIBLE);
@@ -279,6 +427,7 @@ public class UserCustomize extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 pinkShirt.setVisibility(View.VISIBLE);
+                user.setuShirt(2);
 
                 iceShirt.setVisibility(View.INVISIBLE);
                 shulkShirt.setVisibility(View.INVISIBLE);
@@ -291,6 +440,7 @@ public class UserCustomize extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 pants1.setVisibility(View.VISIBLE);
+                user.setuPants(1);
 
                 pants2.setVisibility(View.INVISIBLE);
                 pants3.setVisibility(View.INVISIBLE);
@@ -302,6 +452,7 @@ public class UserCustomize extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 pants2.setVisibility(View.VISIBLE);
+                user.setuPants(2);
 
                 pants1.setVisibility(View.INVISIBLE);
                 pants3.setVisibility(View.INVISIBLE);
@@ -313,6 +464,7 @@ public class UserCustomize extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 pants3.setVisibility(View.VISIBLE);
+                user.setuPants(3);
 
                 pants1.setVisibility(View.INVISIBLE);
                 pants2.setVisibility(View.INVISIBLE);
@@ -362,10 +514,13 @@ public class UserCustomize extends AppCompatActivity {
             public void onClick(View v){
 
                 vanill.setVisibility(View.VISIBLE);
+                user.setuHead(1);
 
                 baldChoco.setVisibility(View.INVISIBLE);
                 blondeGirl.setVisibility(View.INVISIBLE);
                 chocoHair.setVisibility(View.INVISIBLE);
+
+
 
             }
         });
@@ -375,6 +530,7 @@ public class UserCustomize extends AppCompatActivity {
             public void onClick(View v){
 
                 baldChoco.setVisibility(View.VISIBLE);
+                user.setuHead(3);
 
                 vanill.setVisibility(View.INVISIBLE);
                 blondeGirl.setVisibility(View.INVISIBLE);
@@ -387,6 +543,7 @@ public class UserCustomize extends AppCompatActivity {
             public void onClick(View v){
 
                 blondeGirl.setVisibility(View.VISIBLE);
+                user.setuHead(2);
 
                 vanill.setVisibility(View.INVISIBLE);
                 baldChoco.setVisibility(View.INVISIBLE);
@@ -399,6 +556,7 @@ public class UserCustomize extends AppCompatActivity {
             public void onClick(View v){
 
                 chocoHair.setVisibility(View.VISIBLE);
+                user.setuHead(4);
 
                 vanill.setVisibility(View.INVISIBLE);
                 baldChoco.setVisibility(View.INVISIBLE);

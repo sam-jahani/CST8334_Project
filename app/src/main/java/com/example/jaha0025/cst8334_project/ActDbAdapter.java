@@ -192,6 +192,12 @@ public class ActDbAdapter {
         return myDB.rawQuery(SELECT_USER, null);
     }
 
+    public Cursor getUser(int uId) {
+        String SELECT_USER =
+                "SELECT  * FROM " + USER_TABLE + " WHERE " + KEY_ROWID_USER
+                        + " = " + uId;
+        return myDB.rawQuery(SELECT_USER, null);
+    }
     public Cursor getRemainingUserActs(int uId) {
         String SELECT_REMAIN_USERACT =
                 "SELECT  * FROM " + USERACT_TABLE + " WHERE " + KEY_ROWID_USER

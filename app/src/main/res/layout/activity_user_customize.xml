@@ -54,7 +54,7 @@
         android:layout_alignParentStart="true"
 
         app:srcCompat="@drawable/ninonormal"
-        android:visibility="visible"/>
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/aligned_blondegirl"
@@ -90,7 +90,7 @@
         android:layout_marginTop="200dp"
         android:layout_alignParentStart="true"
         app:srcCompat="@drawable/aligned_pants1"
-        android:visibility="visible"
+        android:visibility="invisible"
         />
 
     <ImageView
