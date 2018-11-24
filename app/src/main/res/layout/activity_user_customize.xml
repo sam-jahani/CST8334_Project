@@ -224,7 +224,7 @@
             android:layout_marginTop="15dp"
             android:layout_toRightOf="@+id/av_character"
             android:fontFamily="@font/justthewayyouare"
-            android:text="@string/shirt"
+            android:text="shirt"
             android:textSize="60dp"
             />
 
@@ -238,7 +238,7 @@
             android:layout_toEndOf="@+id/av_character"
             android:layout_toRightOf="@+id/av_character"
             android:fontFamily="@font/justthewayyouare"
-            android:text="@string/pants"
+            android:text="pants"
             android:textSize="60dp"
             />
 
