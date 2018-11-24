@@ -86,7 +86,7 @@ public class LoginPage extends AppCompatActivity {
 
         //declaring adapter
         adapter = new ActDbAdapter(this);
-
+        adapter.open();
 
         logTitleImg = (ImageView) findViewById(R.id.logImgTitle);
 
@@ -188,7 +188,7 @@ public class LoginPage extends AppCompatActivity {
         final SharedPreferences logsharedPreference = getSharedPreferences("Login",MODE_PRIVATE);
         logNewLoginEdt.setText(logsharedPreference.getString("Default Login",""));
         logNewPassEdt.setText(logsharedPreference.getString("Password",""));
-        adapter.open();
+
 
         logSubmitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
