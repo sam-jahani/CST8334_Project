@@ -38,6 +38,7 @@ import android.provider.MediaStore;
 import android.speech.RecognizerIntent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
@@ -189,6 +190,7 @@ public class GoodDeed extends AppCompatActivity {
         exitBut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent k = new Intent(GoodDeed.this, listofDeeds.class);
                 startActivity(k);
             }
@@ -201,7 +203,7 @@ public class GoodDeed extends AppCompatActivity {
             public void onClick(View v) {
                 // Toast doneToast = Toast.makeText(getApplicationContext(),"Congratultions you have completed this Act of Kindness, I love you.", Toast.LENGTH_LONG);
                 //doneToast.show();
-                Toast.makeText(GoodDeed.this,"Congratultions you have completed this Act of Kindness, I love you.", Toast.LENGTH_LONG).show();
+                Toast.makeText(GoodDeed.this,"Congratultions you have completed this Act of Kindness", Toast.LENGTH_LONG).show();
                 Intent k = new Intent(GoodDeed.this, listofDeeds.class);
                 startActivity(k);
             }
@@ -235,6 +237,7 @@ public class GoodDeed extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 managerOfSound(intAOK);
+
             } // END onClick()
         }); // END buttonHello
 
@@ -254,7 +257,7 @@ public class GoodDeed extends AppCompatActivity {
                 // do this if request code is 10.
                 if (requestCode == 10 && resultCode == RESULT_OK) {
                     Bundle extras = data.getExtras();
-                    Bitmap imageBitmap = (Bitmap) extras.get("data");
+                   Bitmap imageBitmap = (Bitmap) extras.get("data");
                     imageViewUpload.setImageBitmap(imageBitmap);
                 }
             }
@@ -281,42 +284,51 @@ public class GoodDeed extends AppCompatActivity {
 
     public void onStop(){
 
-        testSound2.release();
-        super.onStop();
+
+
+        if(testSound2!=null){
+
+            testSound2.reset();
+            testSound2.release();
+
+            super.onStop();
+        }else{
+            super.onStop();
+        }
 
     }
 
-    public void Play(){
-
-        String id = getIntent().getExtras().getString("ID");
-        if(testSound2 == null){
-
-            // if(cursor.move(0)){
-
-            // instaniate the MediaPlayer object
-            testSound2 = MediaPlayer.create(this,R.raw.aok_make_your_own);
-            //starting the recording
-            testSound2.start();
-            // when the recording is finished release the MediaPlayer
-
-            testSound2.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                @Override
-                public void onCompletion(MediaPlayer mediaPlayer) {
-                    //this code actually releases the player
-
-                    testSound2.start();
-
-
-
-                }
-            });
-
-
-
-
-
-
-        }
+//    public void Play(){
+//
+//        String id = getIntent().getExtras().getString("ID");
+//        if(testSound2 == null){
+//
+//            // if(cursor.move(0)){
+//
+//            // instaniate the MediaPlayer object
+//           testSound2 = MediaPlayer.create(this,R.raw.aok_make_your_own);
+//            //starting the recording
+//            //testSound2.start();
+//            // when the recording is finished release the MediaPlayer
+//
+//            testSound2.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+//                @Override
+//                public void onCompletion(MediaPlayer mediaPlayer) {
+//                    //this code actually releases the player
+//
+//                    testSound2.start();
+//
+//
+//
+//                }
+//            });
+//
+//
+//
+//
+//
+//
+//        }
 
 
 //        public void getSpeechInput(View view){
@@ -347,7 +359,7 @@ public class GoodDeed extends AppCompatActivity {
 //
 //        }
 
-    }
+    //}
 
     protected void managerOfSound(int aoknum) {
         //String id = getIntent().getExtras().getString("ID");
@@ -391,6 +403,136 @@ public class GoodDeed extends AppCompatActivity {
             case 9:
                 testSound2 = MediaPlayer.create(this, R.raw.aok_10);
                 break;
+            case 10:
+                testSound2 = MediaPlayer.create(this, R.raw.aok_11);
+                break;
+            case 11:
+                testSound2 = MediaPlayer.create(this, R.raw.aok_12);
+                break;
+
+            case 12:
+                testSound2 = MediaPlayer.create(this, R.raw.aok_13);
+                break;
+            case 13:
+                testSound2 = MediaPlayer.create(this, R.raw.aok_14);
+                break;
+            case 14:
+                testSound2 = MediaPlayer.create(this, R.raw.aok_15);
+                break;
+            case 15:
+                testSound2 = MediaPlayer.create(this, R.raw.aok_16);
+                break;
+            case 16:
+                testSound2 = MediaPlayer.create(this, R.raw.aok_17);
+                break;
+            case 17:
+                testSound2 = MediaPlayer.create(this, R.raw.aok_18);
+                break;
+            case 18:
+                testSound2 = MediaPlayer.create(this, R.raw.aok_19);
+                break;
+            case 19:
+                testSound2 = MediaPlayer.create(this, R.raw.aok_20);
+                break;
+            case 20:
+                testSound2 = MediaPlayer.create(this, R.raw.aok_21);
+                break;
+            case 21:
+                testSound2 = MediaPlayer.create(this, R.raw.aok_22);
+                break;
+            case 22:
+                testSound2 = MediaPlayer.create(this, R.raw.aok_23);
+                break;
+            case 23:
+                testSound2 = MediaPlayer.create(this, R.raw.aok_24);
+                break;
+            case 24:
+                testSound2 = MediaPlayer.create(this, R.raw.aok_25);
+                break;
+            case 25:
+                testSound2 = MediaPlayer.create(this, R.raw.aok_26);
+                break;
+
+            case 26:
+                testSound2 = MediaPlayer.create(this, R.raw.aok_27);
+                break;
+            case 27:
+                testSound2 = MediaPlayer.create(this, R.raw.aok_28);
+                break;
+            case 28:
+                testSound2 = MediaPlayer.create(this, R.raw.aok_29);
+                break;
+            case 29:
+                testSound2 = MediaPlayer.create(this, R.raw.aok_30);
+                break;
+            case 30:
+                testSound2 = MediaPlayer.create(this, R.raw.aok_31);
+                break;
+            case 31:
+                testSound2 = MediaPlayer.create(this, R.raw.aok_32);
+                break;
+            case 32:
+                testSound2 = MediaPlayer.create(this, R.raw.aok_33);
+                break;
+            case 33:
+                testSound2 = MediaPlayer.create(this, R.raw.aok_34);
+                break;
+            case 34:
+                testSound2 = MediaPlayer.create(this, R.raw.aok_35);
+                break;
+            case 35:
+                testSound2 = MediaPlayer.create(this, R.raw.aok_36);
+                break;
+            case 36:
+                testSound2 = MediaPlayer.create(this, R.raw.aok_37);
+                break;
+            case 37:
+                testSound2 = MediaPlayer.create(this, R.raw.aok_38);
+                break;
+            case 38:
+                testSound2 = MediaPlayer.create(this, R.raw.aok_39);
+                break;
+            case 39:
+                testSound2 = MediaPlayer.create(this, R.raw.aok_40);
+                break;
+            case 40:
+                testSound2 = MediaPlayer.create(this, R.raw.aok_41);
+                break;
+            case 41:
+                testSound2 = MediaPlayer.create(this, R.raw.aok_42);
+                break;
+            case 42:
+                testSound2 = MediaPlayer.create(this, R.raw.aok_43);
+                break;
+            case 43:
+                testSound2 = MediaPlayer.create(this, R.raw.aok_44);
+                break;
+
+            case 44:
+                testSound2 = MediaPlayer.create(this, R.raw.aok_45);
+                break;
+            case 45:
+                testSound2 = MediaPlayer.create(this, R.raw.aok_46);
+                break;
+            case 46:
+                testSound2 = MediaPlayer.create(this, R.raw.aok_47);
+                break;
+            case 47:
+                testSound2 = MediaPlayer.create(this, R.raw.aok_48);
+                break;
+            case 48:
+                testSound2 = MediaPlayer.create(this, R.raw.aok_49);
+                break;
+            case 49:
+                testSound2 = MediaPlayer.create(this, R.raw.aok_50);
+                break;
+            case 50:
+                testSound2 = MediaPlayer.create(this, R.raw.aok_51);
+                break;
+            case 51:
+                testSound2 = MediaPlayer.create(this, R.raw.aok_52);
+                break;
+
             default:
                 testSound2 = MediaPlayer.create(this, R.raw.recording);
         }

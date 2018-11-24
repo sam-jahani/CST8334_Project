@@ -147,6 +147,7 @@
             android:ems="10"
             android:inputType="textMultiLine"
             android:lines="10"
+            android:gravity="top"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/constraintLayout"
             app:layout_constraintTop_toBottomOf="@+id/textView2"
