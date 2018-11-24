@@ -14,7 +14,6 @@ package com.example.jaha0025.cst8334_project;
         -> Profile
         -> Cascading Good Deeds
         -> Avatar
-        -> Shop
         -> Exit
 
   Components
@@ -28,7 +27,6 @@ package com.example.jaha0025.cst8334_project;
 -> LoginPage  (If user clicks exit )
 -> CascadingGoodDeed
 -> UserProile
--> Shop
 
  */
 import android.app.AlertDialog;

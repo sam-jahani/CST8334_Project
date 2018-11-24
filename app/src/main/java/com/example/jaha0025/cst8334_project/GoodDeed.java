@@ -12,7 +12,6 @@ Functions of this Screen
     -> User can check it off as done
     -> Application will display points/coins for successfully submitted Good Deed
     -> User can go back to CascadingGoodDeeds
-    -> User can go to the Shop Screen
     -> Go Back to the main menu screen
 Components
 ************
@@ -25,7 +24,6 @@ Next Screen
 ************
 ->MainMenu (User Clicks Back)
 ->CascadingGoodDeed (The selected Good Deed)
--> Shop
  */
 
 import android.content.ActivityNotFoundException;
@@ -38,7 +36,6 @@ import android.provider.MediaStore;
 import android.speech.RecognizerIntent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
@@ -77,7 +74,6 @@ public class GoodDeed extends AppCompatActivity {
         setContentView(R.layout.activity_good_deed);
         MyApplication app = (MyApplication) getApplication();
         uId = app.getUserId();
-        // Play();
 
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         //sanmac
@@ -303,37 +299,6 @@ public class GoodDeed extends AppCompatActivity {
         super.onStop();
     }
 
-    public void Play(){
-
-        String id = getIntent().getExtras().getString("ID");
-        if(testSound2 == null){
-
-            // if(cursor.move(0)){
-
-            // instaniate the MediaPlayer object
-            testSound2 = MediaPlayer.create(this,R.raw.aok_make_your_own);
-            //starting the recording
-            testSound2.start();
-            // when the recording is finished release the MediaPlayer
-
-            testSound2.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                @Override
-                public void onCompletion(MediaPlayer mediaPlayer) {
-                    //this code actually releases the player
-
-                    testSound2.start();
-
-
-
-                }
-            });
-
-
-
-
-
-
-        }
 
 
 //        public void getSpeechInput(View view){
@@ -364,7 +329,7 @@ public class GoodDeed extends AppCompatActivity {
 //
 //        }
 
-    }
+
 
     protected void managerOfSound(int aoknum) {
         //String id = getIntent().getExtras().getString("ID");
@@ -377,11 +342,11 @@ public class GoodDeed extends AppCompatActivity {
         }
         switch (aoknum){
             case 0:
-                testSound2 = MediaPlayer.create(this, R.raw.aok_make_your_own);
+                testSound2 = MediaPlayer.create(this, R.raw.aok_1);
                 break;
 
             case 1:
-                testSound2 = MediaPlayer.create(this, R.raw.aok2_charity_donation_jar);
+                testSound2 = MediaPlayer.create(this, R.raw.aok_2);
                 break;
 
             case 2:
@@ -545,9 +510,9 @@ public class GoodDeed extends AppCompatActivity {
 
 //
 //        if (aoknum==0)
-//            testSound2 = MediaPlayer.create(this, R.raw.aok_make_your_own);
+//            testSound2 = MediaPlayer.create(this, R.raw.aok_1);
 //        else if (aoknum == 1)
-//            testSound2 = MediaPlayer.create(this, R.raw.aok2_charity_donation_jar);
+//            testSound2 = MediaPlayer.create(this, R.raw.aok_2);
 //        else
 //            testSound2 = MediaPlayer.create(this, R.raw.recording);
         testSound2.start();
