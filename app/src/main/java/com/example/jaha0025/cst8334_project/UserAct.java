@@ -5,14 +5,12 @@ import android.content.Context;
 import java.util.ArrayList;
 
 public class UserAct {
-    int uaId;
-    int uId;
-    int aId;
-    String drawFile;
-    String answer;
+    private int uaId;
+    private int uId;
+    private int aId;
+    private String drawFile;
+    private String answer;
     boolean complete;
-    static final int NUMBER_OF_ACTS = 10;
-
     public UserAct() { }
 
     public UserAct(int uId, int aId) {
@@ -56,12 +54,8 @@ public class UserAct {
         this.complete = complete;
     }
 
-    public static ArrayList<UserAct> insertUserActs(Context context, int uId){
-        ArrayList<UserAct> userActs = new ArrayList<UserAct>();
-        for(int aId = 1;aId <= NUMBER_OF_ACTS;aId++)
-        {
-            userActs.add(new UserAct(uId, aId));
-        }
-        return userActs;
+    public void setUaId(int uaId) {
+        this.uaId = uaId;
     }
+
 }

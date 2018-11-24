@@ -15,7 +15,7 @@ public class ActDbAdapter {
     private final static String ACT_TABLE = "ACT_TABLE";
     private final static String USER_TABLE = "USER_TABLE";
     private final static String USERACT_TABLE = "USERACT_TABLE";
-    private final static int DATABASE_VERSION = 3;
+    private final static int DATABASE_VERSION = 4;
     private static Context context;
     public static String TAG = ActDbAdapter.class.getSimpleName();
 
@@ -38,6 +38,9 @@ public class ActDbAdapter {
     public static final String U_AGE = "UAGE";
     public static final String U_GRADE = "UGRADE";
     public static final String U_ABOUT = "UABOUT";
+    public static final String U_HEAD = "UHEAD";
+    public static final String U_SHIRT = "USHIRT";
+    public static final String U_PANTS = "UPANTS";
     public static final String[] USER_FIELDS = new String[] {
             KEY_ROWID_USER,
             U_LOGIN,
@@ -45,7 +48,10 @@ public class ActDbAdapter {
             U_NAME,
             U_AGE,
             U_GRADE,
-            U_ABOUT
+            U_ABOUT,
+            U_HEAD,
+            U_SHIRT,
+            U_PANTS
     };
     public static final String KEY_ROWID_USERACT = "UAID";
     public static final String DRAWFILE = "DRAWFILE";
@@ -74,7 +80,10 @@ public class ActDbAdapter {
                     U_NAME + " text," +
                     U_AGE + " INTEGER," +
                     U_GRADE + " text," +
-                    U_ABOUT + " text, CONSTRAINT login_unique UNIQUE (" +
+                    U_ABOUT + " text," +
+                    U_HEAD + " INTEGER," +
+                    U_SHIRT + " INTEGER," +
+                    U_PANTS + " INTEGER, CONSTRAINT login_unique UNIQUE (" +
                     U_LOGIN + " ));";
 
     private static final String CREATE_TABLE_USERACT =
@@ -169,6 +178,12 @@ public class ActDbAdapter {
                         + " = " + uId;
         return myDB.rawQuery(SELECT_USERACTS, null);
     }
+    public Cursor getUserAct(int uId, int aId) {
+        String SELECT_USERACTS =
+                "SELECT  * FROM " + USERACT_TABLE + " WHERE " + KEY_ROWID_USER
+                        + " = " + uId + " AND " + KEY_ROWID_ACT + " = " + aId;
+        return myDB.rawQuery(SELECT_USERACTS, null);
+    }
 
     public Cursor getUser(String login, String password) {
         String SELECT_USER =
@@ -190,6 +205,15 @@ public class ActDbAdapter {
         values.put(U_AGE, user.getuAge());
         values.put(U_GRADE, user.getuGrade());
         values.put(U_ABOUT, user.getuAbout());
+
+        return myDB.update(USER_TABLE, values, KEY_ROWID_USER + " = ?",
+                new String[] { String.valueOf(user.getuId()) });
+    }
+    public long updateAvatar(User user) {
+        ContentValues values = new ContentValues();
+        values.put(U_HEAD, user.getuHead());
+        values.put(U_SHIRT, user.getuShirt());
+        values.put(U_PANTS, user.getuPants());
 
         return myDB.update(USER_TABLE, values, KEY_ROWID_USER + " = ?",
                 new String[] { String.valueOf(user.getuId()) });
@@ -223,17 +247,19 @@ public class ActDbAdapter {
         user.uGrade = cursor.getString(cursor.getColumnIndex(U_AGE));
         user.uAbout = cursor.getString(cursor.getColumnIndex(U_ABOUT));
         user.uAge = cursor.getInt(cursor.getColumnIndex(U_AGE));
+        user.setuHead(cursor.getInt(cursor.getColumnIndex(U_HEAD)));
+        user.setuShirt(cursor.getInt(cursor.getColumnIndex(U_SHIRT)));
+        user.setuPants(cursor.getInt(cursor.getColumnIndex(U_PANTS)));
         return user;
     }
 
     public static UserAct getUserActFromCursor(Cursor cursor) {
-        UserAct userAct = new UserAct();
-        userAct.uaId = cursor.getInt(cursor.getColumnIndex(KEY_ROWID_USERACT));
-        userAct.uId = cursor.getInt(cursor.getColumnIndex(KEY_ROWID_USER));
-        userAct.aId = cursor.getInt(cursor.getColumnIndex(KEY_ROWID_ACT));
-        userAct.complete = cursor.getInt(cursor.getColumnIndex(COMPLETE)) == 1;
-        userAct.drawFile = cursor.getString(cursor.getColumnIndex(DRAWFILE));
-        userAct.answer = cursor.getString(cursor.getColumnIndex(ANSWER));
+        UserAct userAct = new UserAct(cursor.getInt(cursor.getColumnIndex(KEY_ROWID_USER)),
+                cursor.getInt(cursor.getColumnIndex(KEY_ROWID_ACT)));
+        userAct.setUaId(cursor.getInt(cursor.getColumnIndex(KEY_ROWID_USERACT)));
+        userAct.setComplete(cursor.getInt(cursor.getColumnIndex(COMPLETE)) == 1);
+        userAct.setDrawFile(cursor.getString(cursor.getColumnIndex(DRAWFILE)));
+        userAct.setAnswer(cursor.getString(cursor.getColumnIndex(ANSWER)));
         return userAct;
     }
 }

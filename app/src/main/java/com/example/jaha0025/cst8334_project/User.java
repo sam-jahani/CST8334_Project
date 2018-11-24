@@ -10,6 +10,9 @@ public class User {
     int uAge;
     String uGrade;
     String uAbout;
+    private int uHead;
+    private int uShirt;
+    private int uPants;
     public User(){ }
 
     public User(String login, String pass){
@@ -57,5 +60,29 @@ public class User {
 
     public String getuPass() {
         return uPass;
+    }
+
+    public int getuHead() {
+        return uHead;
+    }
+
+    public void setuHead(int uHead) {
+        this.uHead = uHead;
+    }
+
+    public int getuShirt() {
+        return uShirt;
+    }
+
+    public void setuShirt(int uShirt) {
+        this.uShirt = uShirt;
+    }
+
+    public int getuPants() {
+        return uPants;
+    }
+
+    public void setuPants(int uPants) {
+        this.uPants = uPants;
     }
 }

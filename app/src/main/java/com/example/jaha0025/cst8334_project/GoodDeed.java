@@ -56,13 +56,17 @@ public class GoodDeed extends AppCompatActivity {
     static final int REQUEST_IMAGE_CAPTURE = 50;
     ImageView imageViewUpload;
     TextView textView, textView2, textView3;
-    public Cursor cursor;
+    Cursor cursor;
+    Cursor cursor_userAct;
     ActOfKindness act;
     MediaPlayer testSound2;
     EditText editText;
     int num;
     String voice1;
     int aoknum;
+    int uId;
+    UserAct userAct;
+    ActDbAdapter adapter;
 
     ImageView speechBut;
 
@@ -70,46 +74,40 @@ public class GoodDeed extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_good_deed);
-
+        MyApplication app = (MyApplication) getApplication();
+        uId = app.getUserId();
         // Play();
 
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         //sanmac
-        // ArrayList<ActOfKindness> acts = ActOfKindness.insertActs(this);
-        ActDbAdapter adapter = new ActDbAdapter(this);
+        adapter = new ActDbAdapter(this);
         adapter.open();
-        /*for(ActOfKindness act : acts) {
-            ContentValues newValues = new ContentValues();
-            newValues.put(ActDbAdapter.TITLE, act.aTitle);
-            newValues.put(ActDbAdapter.DESCRIPTION, act.aDescription);
-            newValues.put(ActDbAdapter.QUESTION, act.aQuestion);
-            adapter.insertAct(newValues);
-        }*/
+
         cursor = adapter.getActs();
         textView = findViewById(R.id.textView);
         textView2 = findViewById(R.id.textView2);
         textView3 = findViewById(R.id.textView3);
+        editText = findViewById(R.id.editText2);
+        textView2.setTextColor(Color.BLACK);
+        textView3.setTextColor(Color.BLACK);
+
+        textView3.setTextSize(20);
+
         String id = getIntent().getExtras().getString("ID");
         if(cursor.moveToFirst()){
             cursor.move(Integer.parseInt(id));
             act = ActDbAdapter.getActFromCursor(cursor);
-
+            cursor_userAct = adapter.getUserAct(uId, act.aId);
 
             textView.setText(act.aDescription);
             textView2.setText(act.aQuestion);
             textView3.setText(act.aTitle);
-            //textView.setText("Make a “Welcome to the Neighbourhood” basket for a family who has just moved in. Include some cookies or muffins. Make a list of fun things to do in the neighbourhood – you could include your favourite ice cream store, movie store, the library, your favourite parks, etc. You could also include a hand drawn map. Deliver the basket to the new family’s home. Bring your whole family to deliver the basket to your new neighbours - this way everyone can be introduced.");
-            //  textView.setFontFeatureSettings("gothicfontbold.tff");
-            //textView.setBackgroundColor(Color.YELLOW);
+            if(cursor_userAct.moveToFirst())
+            {
+                userAct = ActDbAdapter.getUserActFromCursor(cursor_userAct);
+                editText.setText(userAct.getAnswer());
+            }
 
-            //textView2.setText("How did this make the new family feel? Did you learn anything interesting about the family? Where did they move from? How old are the kids? How did it make you feel to give this basket to the new family?");
-            textView2.setTextColor(Color.BLACK);
-
-
-            //textView3.setText("Welcome a Neighbour");
-            textView3.setTextColor(Color.BLACK);
-
-            textView3.setTextSize(20);
         }
         imageViewUpload= findViewById(R.id.imageView2);
 
@@ -130,38 +128,37 @@ public class GoodDeed extends AppCompatActivity {
             public void onClick(View v){
                 if(cursor.moveToNext()){
                     act = ActDbAdapter.getActFromCursor(cursor);
+                    cursor_userAct = adapter.getUserAct(uId, act.aId);
                     textView.setText(act.aDescription);
                     textView2.setText(act.aQuestion);
                     textView3.setText(act.aTitle);
+                    if(cursor_userAct.moveToFirst())
+                    {
+                        userAct = ActDbAdapter.getUserActFromCursor(cursor_userAct);
+                        editText.setText(userAct.getAnswer());
+                    }
                 }
             }
         });
 
         ImageView leftArrow = findViewById(R.id.leftArrow);
-
-
-        Random r = new Random();
-        int rando = r.nextInt(10) + 1;
-
         leftArrow.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 if(cursor.moveToPrevious()){
-
-
                     act = ActDbAdapter.getActFromCursor(cursor);
+                    cursor_userAct = adapter.getUserAct(uId, act.aId);
                     textView.setText(act.aDescription);
                     textView2.setText(act.aQuestion);
                     textView3.setText(act.aTitle);
+                    if(cursor_userAct.moveToFirst())
+                    {
+                        userAct = ActDbAdapter.getUserActFromCursor(cursor_userAct);
+                        editText.setText(userAct.getAnswer());
+                    }
                 }
             }
         });
-
-
-
-        //Button button = findViewById(R.id.button);
-        //button.setBackground(getDrawable(@drawable.bee.png));
-        //button.setText();
 
         ImageView homeButton = findViewById(R.id.homeButton);
 
@@ -199,15 +196,14 @@ public class GoodDeed extends AppCompatActivity {
         doneBut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Toast doneToast = Toast.makeText(getApplicationContext(),"Congratultions you have completed this Act of Kindness, I love you.", Toast.LENGTH_LONG);
-                //doneToast.show();
-                Toast.makeText(GoodDeed.this,"Congratultions you have completed this Act of Kindness, I love you.", Toast.LENGTH_LONG).show();
+                String answer = editText.getText().toString();
+                userAct.setAnswer(answer);
+                adapter.updateUserAct(userAct);
+                Toast.makeText(GoodDeed.this,"Congratultions you have completed this Act of Kindness.", Toast.LENGTH_LONG).show();
                 Intent k = new Intent(GoodDeed.this, listofDeeds.class);
                 startActivity(k);
             }
         });
-
-        editText = findViewById(R.id.editText2);
 
         ImageView microphone = findViewById(R.id.microphone);
 
