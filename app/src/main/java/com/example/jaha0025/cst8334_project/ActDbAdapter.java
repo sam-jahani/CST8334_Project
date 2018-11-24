@@ -139,21 +139,18 @@ public class ActDbAdapter {
                 initialValues, SQLiteDatabase.CONFLICT_IGNORE);
     }
 
-    public long insertUserAct(ContentValues initialValues) {
+    public long insertUserAct(User user, ActOfKindness act) {
+        ContentValues initialValues = new ContentValues();
+        initialValues.put(KEY_ROWID_USER, user.getuId());
+        initialValues.put(KEY_ROWID_ACT, act.aId);
         return myDB.insertWithOnConflict(USERACT_TABLE, null,
-                initialValues, SQLiteDatabase.CONFLICT_IGNORE);
+            initialValues, SQLiteDatabase.CONFLICT_IGNORE);
 
     }
 
     public long insertUser(ContentValues initialValues) {
-
-
-
         return myDB.insertWithOnConflict(USER_TABLE, null,
                 initialValues, SQLiteDatabase.CONFLICT_IGNORE);
-
-
-
     }
 
     public Cursor getActs() {
@@ -168,14 +165,21 @@ public class ActDbAdapter {
 
     public Cursor getUserActs(int uId) {
         String SELECT_USERACTS =
-                "SELECT  * FROM " + USERACT_TABLE + "WHERE " + KEY_ROWID_USER
+                "SELECT  * FROM " + USERACT_TABLE + " WHERE " + KEY_ROWID_USER
                         + " = " + uId;
         return myDB.rawQuery(SELECT_USERACTS, null);
     }
 
-    public Cursor getRemaningUserActs(int uId) {
+    public Cursor getUser(String login, String password) {
+        String SELECT_USER =
+                "SELECT  * FROM " + USER_TABLE + " WHERE " + U_LOGIN
+                        + " = '" + login + "' AND " + U_PASS + " = '" + password +"'";
+        return myDB.rawQuery(SELECT_USER, null);
+    }
+
+    public Cursor getRemainingUserActs(int uId) {
         String SELECT_REMAIN_USERACT =
-                "SELECT  * FROM " + USERACT_TABLE + "WHERE " + KEY_ROWID_USER
+                "SELECT  * FROM " + USERACT_TABLE + " WHERE " + KEY_ROWID_USER
                 + " = " + uId + " AND " + COMPLETE + " = 0 ";
         return myDB.rawQuery(SELECT_REMAIN_USERACT, null);
     }

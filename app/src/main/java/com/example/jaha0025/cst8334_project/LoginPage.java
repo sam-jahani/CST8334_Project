@@ -100,8 +100,23 @@ public class LoginPage extends AppCompatActivity {
         logLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent logIntentLogin = new Intent(LoginPage.this, MainMenu.class);
-                startActivityForResult(logIntentLogin,50);
+                String login =  logLoginEdt.getText().toString();
+                String password = logPassEdt.getText().toString();
+                int uId;
+                Cursor cursor =  adapter.getUser(login, password);
+                if(cursor.moveToFirst()) {
+                    uId = ActDbAdapter.getUserFromCursor(cursor).getuId();
+                    MyApplication app = (MyApplication) getApplication();
+                    app.setUserId(uId);
+                    Intent logIntentLogin = new Intent(LoginPage.this, MainMenu.class);
+                    startActivityForResult(logIntentLogin, 50);
+                }
+                else
+                {
+                    Toast toast = Toast.makeText(getApplicationContext(),
+                            "Login or password does not match",Toast.LENGTH_LONG);
+                    toast.show();
+                }
             }
         });
 
@@ -193,35 +208,43 @@ public class LoginPage extends AppCompatActivity {
         logSubmitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*
+               String login =  logNewLoginEdt.getText().toString();
+               String password = logNewPassEdt.getText().toString();
+               int uId;
 
-                  Logic needs to be placed in this area in order to do the following:
+               ContentValues newValues = new ContentValues();
+               newValues.put(ActDbAdapter.U_LOGIN, login);
+               newValues.put(ActDbAdapter.U_PASS, password);
 
-                   -> determine if the login is currently being used
-
-
-                         -> 1 method for db connection / query
-
-
-                 */
-                //open database
-               // adapter.open();
-                //
-                ContentValues newValues = new ContentValues();
-                newValues.put(ActDbAdapter.U_LOGIN, logNewLoginEdt.getText().toString());
-                newValues.put(ActDbAdapter.U_PASS, logNewPassEdt.getText().toString());
                if (adapter.insertUser(newValues) == -1)
                {
                    Toast toast = Toast.makeText(getApplicationContext(), "Login already exists",Toast.LENGTH_LONG);
                    toast.show();
-
                }
+               else
+               {
+                   Cursor cursor = adapter.getUser(login, password);
+                   if(cursor.moveToFirst()) {
+                       User user = ActDbAdapter.getUserFromCursor(cursor);
+                       cursor = adapter.getActs();
+                       ActOfKindness act;
+                       if (cursor.moveToFirst()) {
+                           do {
+                               act = ActDbAdapter.getActFromCursor(cursor);
+                               adapter.insertUserAct(user, act);
 
-               else {
-
-                   Toast toast = Toast.makeText(getApplicationContext(), "User Created", Toast.LENGTH_LONG);
-                   toast.show();
-                   Cursor cursor = adapter.getUsers();
+                           } while (cursor.moveToNext());
+                       }
+                       Toast toast = Toast.makeText(getApplicationContext(),
+                               "User Created", Toast.LENGTH_LONG);
+                       toast.show();
+                   }
+                   else {
+                       Toast toast = Toast.makeText(getApplicationContext(),
+                               "User not Created", Toast.LENGTH_LONG);
+                       toast.show();
+                   }
+                   /*Cursor cursor = adapter.getUsers();
                    if (cursor.moveToFirst()) {
                        do {
 
@@ -229,19 +252,11 @@ public class LoginPage extends AppCompatActivity {
                            Log.i("users", user1.getuLogin());
 
                        } while (cursor.moveToNext());
-                   }
+                   }*/
 
                    Intent logIntentDialog = new Intent(LoginPage.this, LoginPage.class);
                    startActivityForResult(logIntentDialog, 50);
                }
-
-
-
-
-
-
-                //Intent logIntentDialog = new Intent(LoginPage.this, LoginPage.class);
-                //startActivityForResult(logIntentDialog,50);
             }
         });
 
