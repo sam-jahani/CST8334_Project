@@ -225,7 +225,7 @@ public class ActDbAdapter {
         values.put(ANSWER, userAct.getAnswer());
         values.put(COMPLETE, 1);
 
-        return myDB.update(USER_TABLE, values, KEY_ROWID_USER + " = ? AND " +
+        return myDB.update(USERACT_TABLE, values, KEY_ROWID_USER + " = ? AND " +
                 KEY_ROWID_ACT + " = ?",
                 new String[] { String.valueOf(userAct.getuId()), String.valueOf(userAct.getaId())});
     }

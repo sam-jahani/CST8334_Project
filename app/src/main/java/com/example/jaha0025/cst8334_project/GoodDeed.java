@@ -277,9 +277,11 @@ public class GoodDeed extends AppCompatActivity {
 
     public void onStop(){
 
-        testSound2.release();
+        if (testSound2 != null)
+        {
+            testSound2.release();
+        }
         super.onStop();
-
     }
 
     public void Play(){
