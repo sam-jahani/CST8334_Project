@@ -109,7 +109,7 @@ public class LoginPage extends AppCompatActivity {
                     MyApplication app = (MyApplication) getApplication();
                     app.setUserId(uId);
                     Intent logIntentLogin = new Intent(LoginPage.this, MainMenu.class);
-                    startActivityForResult(logIntentLogin, 50);
+                    startActivity(logIntentLogin);
                 }
                 else
                 {
