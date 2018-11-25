@@ -84,7 +84,7 @@
 
 
     <ImageView
-        android:id="@+id/imageView10"
+        android:id="@+id/add"
         android:layout_width="386dp"
         android:layout_height="96dp"
         android:layout_marginStart="924dp"

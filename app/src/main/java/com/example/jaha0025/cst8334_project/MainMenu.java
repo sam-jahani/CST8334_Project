@@ -32,14 +32,18 @@ package com.example.jaha0025.cst8334_project;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.util.Random;
 
 public class MainMenu extends AppCompatActivity {
 
@@ -50,15 +54,19 @@ public class MainMenu extends AppCompatActivity {
     ImageView speechbaloon;
     ImageView  add;
     MediaPlayer testSound;
-
-
+    ActDbAdapter adapter = new ActDbAdapter(this) ;
+    Cursor cursor;
+    UserAct userAct;
+    int uId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
         Play();
-
+        adapter.open();
+        MyApplication app = (MyApplication) getApplication();
+        uId = app.getUserId();
         // insantiating images and buttons
         login_button = findViewById(R.id.main_loginBtn);
         login_button.setBackgroundColor(Color.TRANSPARENT);
@@ -66,7 +74,7 @@ public class MainMenu extends AppCompatActivity {
         yellow_profile = findViewById(R.id.imageView7);
         purple_acts = findViewById(R.id.imageView8);
         speechbaloon = findViewById(R.id.imageView6);
-      //  add = findViewById(R.id.add);
+        add = findViewById(R.id.add);
 
 
         login_button.setOnClickListener(new View.OnClickListener() {
@@ -112,32 +120,32 @@ public class MainMenu extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                AlertDialog alertDialog = new AlertDialog.Builder(MainMenu.this).create();
-                alertDialog.setTitle("This button will take you to the profile screen");
-                alertDialog.setMessage("Do you want to go to the profile screen?");
-
-
-                alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "No",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                            }
-                        });
-
-
-                alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Yes",
-                        new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
+//                AlertDialog alertDialog = new AlertDialog.Builder(MainMenu.this).create();
+//                alertDialog.setTitle("This button will take you to the profile screen");
+//                alertDialog.setMessage("Do you want to go to the profile screen?");
+//
+//
+//                alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "No",
+//                        new DialogInterface.OnClickListener() {
+//                            public void onClick(DialogInterface dialog, int which) {
+//                                dialog.dismiss();
+//                            }
+//                        });
+//
+//
+//                alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Yes",
+//                        new DialogInterface.OnClickListener() {
+//                                public void onClick(DialogInterface dialog, int which) {
 
                                     Intent myintent = new Intent(MainMenu.this, UserProfile.class);
                                     startActivityForResult(myintent,50);
 
-                                    dialog.dismiss();
-
-                            }
-                        });
-                alertDialog.show();
-
+//                                    dialog.dismiss();
+//
+//                            }
+//                        });
+//                alertDialog.show();
+//
             }
         });
 
@@ -154,60 +162,57 @@ The test audio is also played
             @Override
             public void onClick(View view) {
 
-                AlertDialog alertDialog = new AlertDialog.Builder(MainMenu.this).create();
-
-
-                alertDialog.setTitle("This button will take you to the Random Acts of Kindness to perfrom");
-                alertDialog.setMessage("Do you want to go to the screen that lists the random acts of kindess?");
-
-                alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Yes",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
+//                AlertDialog alertDialog = new AlertDialog.Builder(MainMenu.this).create();
+//
+//
+//                alertDialog.setTitle("This button will take you to the Random Acts of Kindness to perfrom");
+//                alertDialog.setMessage("Do you want to go to the screen that lists the random acts of kindess?");
+//
+//                alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Yes",
+//                        new DialogInterface.OnClickListener() {
+//                            public void onClick(DialogInterface dialog, int which) {
 
                                 Intent myintent = new Intent(MainMenu.this, listofDeeds.class);
-                                startActivityForResult(myintent,50);
+                                startActivity(myintent);
 
-                                dialog.dismiss();
-                            }
-                        });
-
-
-
-                alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "No",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-
-                                dialog.dismiss();
-
-                            }
-                        });
-
-
-                alertDialog.show();
+////                                dialog.dismiss();
+//                            }
+//                        });
+//
+//
+//
+//                alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "No",
+//                        new DialogInterface.OnClickListener() {
+//                            public void onClick(DialogInterface dialog, int which) {
+//
+//                                dialog.dismiss();
+//
+//                            }
+//                        });
+//
+//
+//                alertDialog.show();
 
             }
         });
 
 
 
-//        add.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//              AlertDialog alertDialog = new AlertDialog.Builder(MainMenu.this).create();
-//                alertDialog.setTitle("This button will take the user to a random act of kindness that is selected from an SQL statement");
-//                alertDialog.setMessage("Will you do it?");
-//                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-//                        new DialogInterface.OnClickListener() {
-//                            public void onClick(DialogInterface dialog, int which) {
-//                               //Play();
-//                                dialog.dismiss();
-//                            }
-//                        });
-//                alertDialog.show();
-//
-//            }
-//        });
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cursor = adapter.getRemainingUserActs(uId);
+                Random rng = new Random();
+                int count = cursor.getCount();
+                if(count > 0) {
+                    cursor.move(rng.nextInt(count));
+                    userAct = ActDbAdapter.getUserActFromCursor(cursor);
+                    Intent k = new Intent(MainMenu.this, GoodDeed.class);
+                    k.putExtra("ID", String.valueOf(userAct.getaId()));
+                    startActivity(k);
+                }
+            }
+        });
 
 
 

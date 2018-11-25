@@ -6,28 +6,22 @@ public class ActsofK {
 
     private String aokTitle;
     private String id;
+    private String completed;
 
-    public ActsofK(String id, String aokTitle){
+    public ActsofK(String id, String aokTitle, String completed){
         this.id=id;
         this.aokTitle=aokTitle;
-
+        this.completed = completed;
     }
     public String getId() {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-
-
     public String getAokTitle() {
         return aokTitle;
     }
 
-    public void setAokTitle(String aokTitle) {
-        this.aokTitle = aokTitle;
+    public String getCompleted() {
+        return completed;
     }
-
 }

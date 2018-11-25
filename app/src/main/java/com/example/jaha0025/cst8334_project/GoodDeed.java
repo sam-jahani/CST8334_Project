@@ -92,7 +92,7 @@ public class GoodDeed extends AppCompatActivity {
 
         String id = getIntent().getExtras().getString("ID");
         if(cursor.moveToFirst()){
-            cursor.move(Integer.parseInt(id));
+            cursor.move(Integer.parseInt(id) - 1);
             act = ActDbAdapter.getActFromCursor(cursor);
             cursor_userAct = adapter.getUserAct(uId, act.aId);
 
