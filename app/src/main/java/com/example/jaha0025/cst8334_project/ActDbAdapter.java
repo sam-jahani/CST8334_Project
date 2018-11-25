@@ -15,7 +15,7 @@ public class ActDbAdapter {
     private final static String ACT_TABLE = "ACT_TABLE";
     private final static String USER_TABLE = "USER_TABLE";
     private final static String USERACT_TABLE = "USERACT_TABLE";
-    private final static int DATABASE_VERSION = 6;
+    private final static int DATABASE_VERSION = 7;
     private static Context context;
     public static String TAG = ActDbAdapter.class.getSimpleName();
 
@@ -152,6 +152,7 @@ public class ActDbAdapter {
         ContentValues initialValues = new ContentValues();
         initialValues.put(KEY_ROWID_USER, user.getuId());
         initialValues.put(KEY_ROWID_ACT, act.aId);
+        initialValues.put(COMPLETE, 0);
         return myDB.insertWithOnConflict(USERACT_TABLE, null,
             initialValues, SQLiteDatabase.CONFLICT_IGNORE);
 
@@ -201,7 +202,7 @@ public class ActDbAdapter {
     public Cursor getRemainingUserActs(int uId) {
         String SELECT_REMAIN_USERACT =
                 "SELECT  * FROM " + USERACT_TABLE + " WHERE " + KEY_ROWID_USER
-                + " = " + uId + " AND " + COMPLETE + " = 0 ";
+                + " = " + uId + " AND " + COMPLETE + " = 0";
         return myDB.rawQuery(SELECT_REMAIN_USERACT, null);
     }
 

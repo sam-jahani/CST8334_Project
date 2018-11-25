@@ -203,11 +203,14 @@ The test audio is also played
             public void onClick(View view) {
                 cursor = adapter.getRemainingUserActs(uId);
                 Random rng = new Random();
-                cursor.move(rng.nextInt(cursor.getCount()));
-                userAct = ActDbAdapter.getUserActFromCursor(cursor);
-                Intent k = new Intent(MainMenu.this, GoodDeed.class);
-                k.putExtra("ID", userAct.getaId());
-                startActivity(k);
+                int count = cursor.getCount();
+                if(count > 0) {
+                    cursor.move(rng.nextInt(count));
+                    userAct = ActDbAdapter.getUserActFromCursor(cursor);
+                    Intent k = new Intent(MainMenu.this, GoodDeed.class);
+                    k.putExtra("ID", String.valueOf(userAct.getaId()));
+                    startActivity(k);
+                }
             }
         });
 
