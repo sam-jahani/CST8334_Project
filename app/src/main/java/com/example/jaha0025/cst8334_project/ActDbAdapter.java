@@ -205,6 +205,13 @@ public class ActDbAdapter {
         return myDB.rawQuery(SELECT_REMAIN_USERACT, null);
     }
 
+    public Cursor getCompletedUserActs(int uId) {
+        String SELECT_REMAIN_USERACT =
+                "SELECT  * FROM " + USERACT_TABLE + " WHERE " + KEY_ROWID_USER
+                        + " = " + uId + " AND " + COMPLETE + " = 1 ";
+        return myDB.rawQuery(SELECT_REMAIN_USERACT, null);
+    }
+
     public long updateUser(User user) {
         ContentValues values = new ContentValues();
         values.put(U_NAME, user.getuName());
@@ -250,7 +257,7 @@ public class ActDbAdapter {
         user.uLogin = cursor.getString(cursor.getColumnIndex(U_LOGIN));
         user.uPass = cursor.getString(cursor.getColumnIndex(U_PASS));
         user.uName = cursor.getString(cursor.getColumnIndex(U_NAME));
-        user.uGrade = cursor.getString(cursor.getColumnIndex(U_AGE));
+        user.uGrade = cursor.getString(cursor.getColumnIndex(U_GRADE));
         user.uAbout = cursor.getString(cursor.getColumnIndex(U_ABOUT));
         user.uAge = cursor.getInt(cursor.getColumnIndex(U_AGE));
         user.setuHead(cursor.getInt(cursor.getColumnIndex(U_HEAD)));

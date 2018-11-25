@@ -53,10 +53,11 @@
                     android:id="@+id/proTxtNameTab"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="15dp"
-                    android:layout_marginStart="288dp"
+                    android:layout_marginStart="268dp"
                     android:layout_marginTop="84dp"
                     android:text="@string/app_name"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -91,14 +92,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <!--<ImageSwitcher-->
-                <!--android:id="@+id/proBadgesImg"-->
-                <!--android:layout_width="70dp"-->
-                <!--android:layout_height="70dp"-->
-                <!--android:layout_centerHorizontal="true"-->
-                <!--android:layout_centerVertical="true">-->
-                <!--</ImageSwitcher>-->
-
                 <TextView
                     android:id="@+id/proTxtLevel"
                     android:layout_width="wrap_content"
@@ -117,12 +110,23 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="200dp"
                     android:layout_marginTop="452dp"
-                    android:max="52"
+                    android:max="10"
                     android:minWidth="300dp"
                     android:minHeight="25dp"
                     android:progress="0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/proTxtProgress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:layout_marginStart="330dp"
+                    android:layout_marginTop="455dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    />
 
                 <ImageButton
                     android:id="@+id/proBtnHome"
@@ -138,11 +142,11 @@
                     android:id="@+id/proBtnProfile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/zeel_icon_profile"
                     android:layout_marginStart="276dp"
                     android:layout_marginTop="570dp"
+                    android:src="@drawable/zeel_icon_profile"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageButton
                     android:id="@+id/proBtnActs"
@@ -183,10 +187,10 @@
                     android:layout_width="450dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="80dp"
-                    android:inputType="none"
                     android:hint="Full Name"
-                    android:textSize="30dp"
-                    android:imeOptions="actionDone"/>
+                    android:imeOptions="actionDone"
+                    android:inputType="none"
+                    android:textSize="30dp" />
 
 
             </LinearLayout>
@@ -207,7 +211,7 @@
                     android:id="@+id/proEdtAge"
                     android:layout_width="450dp"
                     android:layout_height="wrap_content"
-                    android:hint="your age"
+                    android:hint="Age"
                     android:inputType="none"
                     android:textSize="30dp" />
 
@@ -230,7 +234,7 @@
                     android:id="@+id/proEdtGrade"
                     android:layout_width="450dp"
                     android:layout_height="wrap_content"
-                    android:hint="grade"
+                    android:hint="Grade"
                     android:inputType="none"
                     android:textSize="30dp" />
 
@@ -255,7 +259,7 @@
                     android:layout_width="450dp"
                     android:layout_height="150dp"
                     android:gravity="top"
-                    android:hint="about"
+                    android:hint="About"
                     android:inputType="none"
                     android:textSize="30dp" />
 
@@ -275,9 +279,9 @@
                         android:id="@+id/proBtnSave"
                         android:layout_width="53dp"
                         android:layout_height="59dp"
+                        android:layout_marginTop="10dp"
                         android:background="@color/bgActs"
-                        android:src="@drawable/zeel_icon_save"
-                        android:layout_marginTop="10dp"/>
+                        android:src="@drawable/zeel_icon_save" />
 
                 </LinearLayout>
 
