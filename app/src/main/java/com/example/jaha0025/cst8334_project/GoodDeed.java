@@ -123,50 +123,50 @@ public class GoodDeed extends AppCompatActivity {
             }
         });
 
-        ImageView rightArrow = findViewById(R.id.rightArrow);
-
-        rightArrow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v){
-                if(cursor.moveToNext()){
-                    act = ActDbAdapter.getActFromCursor(cursor);
-                    cursor_userAct = adapter.getUserAct(uId, act.aId);
-                    textView.setText(act.aDescription);
-                    textView2.setText(act.aQuestion);
-                    textView3.setText(act.aTitle);
-                    if(cursor_userAct.moveToFirst())
-                    {
-                        userAct = ActDbAdapter.getUserActFromCursor(cursor_userAct);
-                        editText.setText(userAct.getAnswer());
-                    }
-                }
-            }
-        });
-
-        ImageView leftArrow = findViewById(R.id.leftArrow);
-
-
-        Random r = new Random();
-        int rando = r.nextInt(10) + 1;
-
-        leftArrow.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                if(cursor.moveToPrevious()){
-                    act = ActDbAdapter.getActFromCursor(cursor);
-                    cursor_userAct = adapter.getUserAct(uId, act.aId);
-                    textView.setText(act.aDescription);
-                    textView2.setText(act.aQuestion);
-                    textView3.setText(act.aTitle);
-                    if(cursor_userAct.moveToFirst())
-                    {
-                        userAct = ActDbAdapter.getUserActFromCursor(cursor_userAct);
-                        editText.setText(userAct.getAnswer());
-                    }
-                }
-            }
-        });
-
+//    ImageView rightArrow = findViewById(R.id.rightArrow);
+//
+//        rightArrow.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v){
+//                if(cursor.moveToNext()){
+//                    act = ActDbAdapter.getActFromCursor(cursor);
+//                    cursor_userAct = adapter.getUserAct(uId, act.aId);
+//                    textView.setText(act.aDescription);
+//                    textView2.setText(act.aQuestion);
+//                    textView3.setText(act.aTitle);
+//                    if(cursor_userAct.moveToFirst())
+//                    {
+//                        userAct = ActDbAdapter.getUserActFromCursor(cursor_userAct);
+//                        editText.setText(userAct.getAnswer());
+//                    }
+//                }
+//            }
+//        });
+//
+//        ImageView leftArrow = findViewById(R.id.leftArrow);
+//
+//
+//        Random r = new Random();
+//        int rando = r.nextInt(10) + 1;
+//
+//        leftArrow.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View v){
+//                if(cursor.moveToPrevious()){
+//                    act = ActDbAdapter.getActFromCursor(cursor);
+//                    cursor_userAct = adapter.getUserAct(uId, act.aId);
+//                    textView.setText(act.aDescription);
+//                    textView2.setText(act.aQuestion);
+//                    textView3.setText(act.aTitle);
+//                    if(cursor_userAct.moveToFirst())
+//                    {
+//                        userAct = ActDbAdapter.getUserActFromCursor(cursor_userAct);
+//                        editText.setText(userAct.getAnswer());
+//                    }
+//                }
+//            }
+//        });
+//
 
 
         //Button button = findViewById(R.id.button);
