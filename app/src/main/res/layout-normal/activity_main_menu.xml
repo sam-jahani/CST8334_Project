@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+
+    android:background="@drawable/zeel_bg"
+    tools:context=".GoodDeed"
+    tools:layout_editor_absoluteY="89dp">
+
+    <ImageView
+        android:id="@+id/main_loginBtn"
+        android:layout_width="72dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="245dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/login_btn" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="72dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="245dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/zeel_home_purple" />
+
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="72dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="270dp"
+        android:layout_marginTop="245dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/yellow_profile" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="72dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="390dp"
+        android:layout_marginTop="245dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/zeel_icon_acts" />
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="34dp"
+        android:layout_height="87dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="100dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/bee" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="262dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/menu_label" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="121dp"
+        android:layout_height="103dp"
+        android:layout_marginStart="104dp"
+        android:layout_marginTop="64dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/speechbaloon" />
+
+
+    <ImageView
+        android:id="@+id/add"
+        android:layout_width="36dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="152dp"
+        android:layout_marginTop="132dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/add" />
+
+
+    <!--<android.support.constraint.Guideline-->
+    <!--android:id="@+id/guideline2"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="horizontal"-->
+    <!--app:layout_constraintGuide_begin="20dp" />-->
+
+    <!--<android.support.constraint.Guideline-->
+    <!--android:id="@+id/guideline3"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="vertical"-->
+    <!--app:layout_constraintGuide_begin="20dp" />-->
+
+    <!--<android.support.constraint.Guideline-->
+    <!--android:id="@+id/guideline4"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="vertical"-->
+    <!--app:layout_constraintGuide_begin="16dp" />-->
+
+    <!--<android.support.constraint.Guideline-->
+    <!--android:id="@+id/guideline5"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="horizontal"-->
+    <!--app:layout_constraintGuide_begin="20dp" />-->
+
+    <!--<android.support.constraint.Guideline-->
+    <!--android:id="@+id/guideline6"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="horizontal"-->
+    <!--app:layout_constraintGuide_begin="20dp" />-->
+
+    <!--<android.support.constraint.Guideline-->
+    <!--android:id="@+id/guideline7"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="horizontal"-->
+    <!--app:layout_constraintGuide_begin="20dp" />-->
+
+
+    <!--&lt;!&ndash;<ImageView&ndash;&gt;-->
+    <!--&lt;!&ndash;android:id="@+id/imageView10"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_width="386dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_height="96dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;app:layout_constraintBottom_toBottomOf="parent"&ndash;&gt;-->
+    <!--&lt;!&ndash;app:layout_constraintEnd_toEndOf="parent"&ndash;&gt;-->
+    <!--&lt;!&ndash;app:layout_constraintHorizontal_bias="1.0"&ndash;&gt;-->
+    <!--&lt;!&ndash;app:layout_constraintStart_toEndOf="@+id/guideline"&ndash;&gt;-->
+    <!--&lt;!&ndash;app:layout_constraintTop_toBottomOf="@+id/imageView8"&ndash;&gt;-->
+    <!--&lt;!&ndash;app:layout_constraintVertical_bias="0.575"&ndash;&gt;-->
+    <!--&lt;!&ndash;app:srcCompat="@drawable/add" />&ndash;&gt;-->
+
+</android.support.constraint.ConstraintLayout>

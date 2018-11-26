@@ -36,6 +36,7 @@ import android.provider.MediaStore;
 import android.speech.RecognizerIntent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
@@ -82,13 +83,14 @@ public class GoodDeed extends AppCompatActivity {
 
         cursor = adapter.getActs();
         textView = findViewById(R.id.textView);
+        textView.setMovementMethod(new ScrollingMovementMethod());
         textView2 = findViewById(R.id.textView2);
         textView3 = findViewById(R.id.textView3);
         editText = findViewById(R.id.editText2);
         textView2.setTextColor(Color.BLACK);
         textView3.setTextColor(Color.BLACK);
 
-        textView3.setTextSize(20);
+     //  textView3.setTextSize(5);
 
         String id = getIntent().getExtras().getString("ID");
         if(cursor.moveToFirst()){
@@ -109,7 +111,7 @@ public class GoodDeed extends AppCompatActivity {
             //textView3.setText("Welcome a Neighbour");
             textView3.setTextColor(Color.BLACK);
 
-            textView3.setTextSize(20);
+            textView3.setTextSize(5);
         }
         imageViewUpload= findViewById(R.id.imageView2);
 
@@ -341,165 +343,165 @@ public class GoodDeed extends AppCompatActivity {
             testSound2.release();
         }
         switch (aoknum){
-            case 0:
+            case 1:
                 testSound2 = MediaPlayer.create(this, R.raw.aok_1);
                 break;
 
-            case 1:
+            case 2:
                 testSound2 = MediaPlayer.create(this, R.raw.aok_2);
                 break;
 
-            case 2:
+            case 3:
                 testSound2 = MediaPlayer.create(this, R.raw.aok_3);
                 break;
-            case 3:
+            case 4:
                 testSound2 = MediaPlayer.create(this, R.raw.aok_4);
                 break;
-            case 4:
+            case 5:
                 testSound2 = MediaPlayer.create(this, R.raw.aok_5);
                 break;
-            case 5:
+            case 6:
                 testSound2 = MediaPlayer.create(this, R.raw.aok_6);
                 break;
-            case 6:
+            case 7:
                 testSound2 = MediaPlayer.create(this, R.raw.aok_7);
                 break;
-            case 7:
+            case 8:
                 testSound2 = MediaPlayer.create(this, R.raw.aok_8);
                 break;
-            case 8:
+            case 9:
                 testSound2 = MediaPlayer.create(this, R.raw.aok_9);
                 break;
-            case 9:
+            case 10:
                 testSound2 = MediaPlayer.create(this, R.raw.aok_10);
                 break;
-            case 10:
+            case 11:
                 testSound2 = MediaPlayer.create(this, R.raw.aok_11);
                 break;
-            case 11:
+            case 12:
                 testSound2 = MediaPlayer.create(this, R.raw.aok_12);
                 break;
 
-            case 12:
+            case 13:
                 testSound2 = MediaPlayer.create(this, R.raw.aok_13);
                 break;
-            case 13:
+            case 14:
                 testSound2 = MediaPlayer.create(this, R.raw.aok_14);
                 break;
-            case 14:
+            case 15:
                 testSound2 = MediaPlayer.create(this, R.raw.aok_15);
                 break;
-            case 15:
+            case 16:
                 testSound2 = MediaPlayer.create(this, R.raw.aok_16);
                 break;
-            case 16:
+            case 17:
                 testSound2 = MediaPlayer.create(this, R.raw.aok_17);
                 break;
-            case 17:
+            case 18:
                 testSound2 = MediaPlayer.create(this, R.raw.aok_18);
                 break;
-            case 18:
+            case 19:
                 testSound2 = MediaPlayer.create(this, R.raw.aok_19);
                 break;
-            case 19:
+            case 20:
                 testSound2 = MediaPlayer.create(this, R.raw.aok_20);
                 break;
-            case 20:
+            case 21:
                 testSound2 = MediaPlayer.create(this, R.raw.aok_21);
                 break;
-            case 21:
+            case 22:
                 testSound2 = MediaPlayer.create(this, R.raw.aok_22);
                 break;
-            case 22:
+            case 23:
                 testSound2 = MediaPlayer.create(this, R.raw.aok_23);
                 break;
-            case 23:
+            case 24:
                 testSound2 = MediaPlayer.create(this, R.raw.aok_24);
                 break;
-            case 24:
+            case 25:
                 testSound2 = MediaPlayer.create(this, R.raw.aok_25);
                 break;
-            case 25:
+            case 26:
                 testSound2 = MediaPlayer.create(this, R.raw.aok_26);
                 break;
 
-            case 26:
+            case 27:
                 testSound2 = MediaPlayer.create(this, R.raw.aok_27);
                 break;
-            case 27:
+            case 28:
                 testSound2 = MediaPlayer.create(this, R.raw.aok_28);
                 break;
-            case 28:
+            case 29:
                 testSound2 = MediaPlayer.create(this, R.raw.aok_29);
                 break;
-            case 29:
+            case 30:
                 testSound2 = MediaPlayer.create(this, R.raw.aok_30);
                 break;
-            case 30:
+            case 31:
                 testSound2 = MediaPlayer.create(this, R.raw.aok_31);
                 break;
-            case 31:
+            case 32:
                 testSound2 = MediaPlayer.create(this, R.raw.aok_32);
                 break;
-            case 32:
+            case 33:
                 testSound2 = MediaPlayer.create(this, R.raw.aok_33);
                 break;
-            case 33:
+            case 34:
                 testSound2 = MediaPlayer.create(this, R.raw.aok_34);
                 break;
-            case 34:
+            case 35:
                 testSound2 = MediaPlayer.create(this, R.raw.aok_35);
                 break;
-            case 35:
+            case 36:
                 testSound2 = MediaPlayer.create(this, R.raw.aok_36);
                 break;
-            case 36:
+            case 37:
                 testSound2 = MediaPlayer.create(this, R.raw.aok_37);
                 break;
-            case 37:
+            case 38:
                 testSound2 = MediaPlayer.create(this, R.raw.aok_38);
                 break;
-            case 38:
+            case 39:
                 testSound2 = MediaPlayer.create(this, R.raw.aok_39);
                 break;
-            case 39:
+            case 40:
                 testSound2 = MediaPlayer.create(this, R.raw.aok_40);
                 break;
-            case 40:
+            case 41:
                 testSound2 = MediaPlayer.create(this, R.raw.aok_41);
                 break;
-            case 41:
+            case 42:
                 testSound2 = MediaPlayer.create(this, R.raw.aok_42);
                 break;
-            case 42:
+            case 43:
                 testSound2 = MediaPlayer.create(this, R.raw.aok_43);
                 break;
-            case 43:
+            case 44:
                 testSound2 = MediaPlayer.create(this, R.raw.aok_44);
                 break;
 
-            case 44:
+            case 45:
                 testSound2 = MediaPlayer.create(this, R.raw.aok_45);
                 break;
-            case 45:
+            case 46:
                 testSound2 = MediaPlayer.create(this, R.raw.aok_46);
                 break;
-            case 46:
+            case 47:
                 testSound2 = MediaPlayer.create(this, R.raw.aok_47);
                 break;
-            case 47:
+            case 48:
                 testSound2 = MediaPlayer.create(this, R.raw.aok_48);
                 break;
-            case 48:
+            case 49:
                 testSound2 = MediaPlayer.create(this, R.raw.aok_49);
                 break;
-            case 49:
+            case 50:
                 testSound2 = MediaPlayer.create(this, R.raw.aok_50);
                 break;
-            case 50:
+            case 51:
                 testSound2 = MediaPlayer.create(this, R.raw.aok_51);
                 break;
-            case 51:
+            case 52:
                 testSound2 = MediaPlayer.create(this, R.raw.aok_52);
                 break;
 
