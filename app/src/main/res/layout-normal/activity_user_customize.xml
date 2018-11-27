@@ -19,8 +19,8 @@
 
     <ImageView
         android:id="@+id/av_butterfly"
-        android:layout_width="200dp"
-        android:layout_height="300dp"
+        android:layout_width="90dp"
+        android:layout_height="100dp"
         android:layout_alignParentEnd="true"
         app:srcCompat="@drawable/butterfly" />
 
@@ -37,10 +37,10 @@
 
     <ImageView
         android:id="@+id/av_close"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
         android:layout_alignTop="@+id/av_bee"
-       android:layout_alignParentTop="true"
+        android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         app:srcCompat="@drawable/close" />
 
@@ -48,108 +48,107 @@
 
     <ImageView
         android:id="@+id/av_character"
-        android:layout_width="500dp"
-        android:layout_height="500dp"
-        android:layout_marginTop="200dp"
+        android:layout_width="232dp"
+        android:layout_height="310dp"
         android:layout_alignParentStart="true"
-
+        android:layout_marginTop="1dp"
         app:srcCompat="@drawable/ninonormal"
         android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/aligned_blondegirl"
-        android:layout_width="500dp"
-        android:layout_height="500dp"
-        android:layout_marginTop="200dp"
+        android:layout_width="232dp"
+        android:layout_height="310dp"
         android:layout_alignParentStart="true"
+        android:layout_marginTop="1dp"
         app:srcCompat="@drawable/blondegirl"
         android:visibility="invisible"/>
 
     <ImageView
-    android:id="@+id/aligned_bald_choco"
-        android:layout_width="500dp"
-        android:layout_height="500dp"
-        android:layout_marginTop="200dp"
-    android:layout_alignParentStart="true"
-    app:srcCompat="@drawable/aligned_bald_choco"
-    android:visibility="invisible"/>
+        android:id="@+id/aligned_bald_choco"
+        android:layout_width="232dp"
+        android:layout_height="310dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="1dp"
+        app:srcCompat="@drawable/aligned_bald_choco"
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/aligned_choco_hair"
-        android:layout_width="500dp"
-        android:layout_height="500dp"
-        android:layout_marginTop="200dp"
+        android:layout_width="232dp"
+        android:layout_height="310dp"
         android:layout_alignParentStart="true"
+        android:layout_marginTop="1dp"
         app:srcCompat="@drawable/chocohair"
         android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/av_character_pants1"
-        android:layout_width="500dp"
-        android:layout_height="500dp"
-        android:layout_marginTop="200dp"
+        android:layout_width="232dp"
+        android:layout_height="310dp"
         android:layout_alignParentStart="true"
+        android:layout_marginTop="1dp"
         app:srcCompat="@drawable/aligned_pants1"
         android:visibility="invisible"
         />
 
     <ImageView
         android:id="@+id/av_character_pants2"
-        android:layout_width="500dp"
-        android:layout_height="500dp"
-        android:layout_marginTop="200dp"
+        android:layout_width="232dp"
+        android:layout_height="310dp"
         android:layout_alignParentStart="true"
+        android:layout_marginTop="1dp"
         app:srcCompat="@drawable/aligned_pants2"
         android:visibility="invisible"
         />
 
     <ImageView
         android:id="@+id/av_character_pants3"
-        android:layout_width="500dp"
-        android:layout_height="500dp"
-        android:layout_marginTop="200dp"
+        android:layout_width="232dp"
+        android:layout_height="310dp"
         android:layout_alignParentStart="true"
+        android:layout_marginTop="1dp"
         app:srcCompat="@drawable/aligned_pants3"
         android:visibility="invisible"
         />
 
     <ImageView
         android:id="@+id/av_character_shulk"
-        android:layout_width="500dp"
-        android:layout_height="500dp"
-        android:layout_marginTop="200dp"
+        android:layout_width="232dp"
+        android:layout_height="310dp"
         android:layout_alignParentStart="true"
+        android:layout_marginTop="1dp"
         app:srcCompat="@drawable/aligned_shulk"
         android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/av_character_ice"
-        android:layout_width="500dp"
-        android:layout_height="500dp"
-        android:layout_marginTop="200dp"
+        android:layout_width="232dp"
+        android:layout_height="310dp"
         android:layout_alignParentStart="true"
+        android:layout_marginTop="1dp"
         app:srcCompat="@drawable/aligned_ice"
         android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/av_character_pink"
-        android:layout_width="500dp"
-        android:layout_height="500dp"
-        android:layout_marginTop="200dp"
+        android:layout_width="232dp"
+        android:layout_height="310dp"
         android:layout_alignParentStart="true"
+        android:layout_marginTop="1dp"
         app:srcCompat="@drawable/aligned_pink"
         android:visibility="invisible"/>
 
 
 
     <ImageView
-    android:id="@+id/av_skin_tone_1"
-    android:layout_width="80dp"
-    android:layout_height="80dp"
-    app:srcCompat="@drawable/skin_tone_1"
-    android:layout_below="@id/av_character"
-    android:layout_marginLeft="40dp"
-    />
+        android:id="@+id/av_skin_tone_1"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:srcCompat="@drawable/skin_tone_1"
+        android:layout_below="@id/av_character"
+        android:layout_marginLeft="40dp"
+        />
 
     <ImageView
         android:id="@+id/av_skin_tone_1_star"
@@ -207,25 +206,28 @@
             android:id="@+id/av_head_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
+
             android:layout_marginTop="15dp"
-            android:layout_toEndOf="@+id/av_character"
+
             android:fontFamily="@font/justthewayyouare"
             android:text="Head"
-            android:textSize="60dp"
+            android:textSize="25dp"
+            android:layout_weight="1"
             />
+
+
 
         <TextView
             android:id="@+id/av_shirt_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/av_head_text"
-            android:layout_marginLeft="50dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="15dp"
             android:layout_toRightOf="@+id/av_character"
             android:fontFamily="@font/justthewayyouare"
-            android:text="shirt"
-            android:textSize="60dp"
+            android:text="@string/shirt"
+            android:textSize="25dp"
             />
 
         <TextView
@@ -233,13 +235,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/av_shirt_text"
-            android:layout_marginLeft="50dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="15dp"
             android:layout_toEndOf="@+id/av_character"
             android:layout_toRightOf="@+id/av_character"
             android:fontFamily="@font/justthewayyouare"
-            android:text="pants"
-            android:textSize="60dp"
+            android:text="@string/pants"
+            android:textSize="25dp"
             />
 
         <TextView
@@ -247,12 +249,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/av_pants_text"
-            android:layout_marginLeft="50dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="15dp"
             android:layout_toRightOf="@+id/av_character"
             android:fontFamily="@font/justthewayyouare"
             android:text="All"
-            android:textSize="60dp"
+            android:textSize="25dp"
             />
 
     </LinearLayout>
@@ -337,51 +339,51 @@
     </ScrollView>
 
     <ScrollView
-    android:id="@+id/av_shirt_scrollview"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_below="@+id/av_lltv"
-    android:layout_marginStart="20dp"
-    android:layout_marginTop="20dp"
-    android:layout_marginEnd="20dp"
-    android:layout_marginBottom="50dp"
-    android:layout_toEndOf="@+id/av_character"
-    android:visibility="invisible"
-    >
-
-    <LinearLayout
+        android:id="@+id/av_shirt_scrollview"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:layout_below="@+id/av_lltv"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="50dp"
+        android:layout_toEndOf="@+id/av_character"
+        android:visibility="invisible"
+        >
 
-
-        <ImageView
-            android:id="@+id/av_pink_scroll"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/pink_shirt" />
-
-        <ImageView
-            android:id="@+id/av_shulk_scroll"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:layout_weight="1"
-            app:srcCompat="@drawable/shulk_shirt" />
-
-        <ImageView
-            android:id="@+id/av_ice_scroll"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:layout_weight="1"
-            app:srcCompat="@drawable/ice_shirt" />
-    </LinearLayout>
+            android:orientation="vertical">
 
 
-</ScrollView>
+            <ImageView
+                android:id="@+id/av_pink_scroll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/pink_shirt" />
+
+            <ImageView
+                android:id="@+id/av_shulk_scroll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_weight="1"
+                app:srcCompat="@drawable/shulk_shirt" />
+
+            <ImageView
+                android:id="@+id/av_ice_scroll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ice_shirt" />
+        </LinearLayout>
+
+
+    </ScrollView>
 
     <ScrollView
         android:id="@+id/av_pants_scrollview"
@@ -468,12 +470,12 @@
                 app:srcCompat="@drawable/blondegirlhead" />
 
             <ImageView
-            android:id="@+id/imageView4.5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/bald_choco" />
+                android:id="@+id/imageView4.5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/bald_choco" />
 
             <ImageView
                 android:id="@+id/imageView4.5.1"

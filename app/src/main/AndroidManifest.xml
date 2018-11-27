@@ -30,7 +30,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".GoodDeed">
+        <activity android:name=".GoodDeed"
+            android:screenOrientation="landscape">
 
              <!--<intent-filter>-->
              <!--<action android:name="android.intent.action.MAIN" />-->
@@ -39,9 +40,11 @@
              <!--<category android:name="android.intent.category.LAUNCHER" />-->
              <!--</intent-filter>-->
         </activity>
-        <activity android:name=".CascadingGoodDeeds" />
+        <activity android:name=".CascadingGoodDeeds"
+            android:screenOrientation="landscape"/>
         <!-- <activity android:name=".GoodDeed" /> -->
-        <activity android:name=".MainMenu">
+        <activity android:name=".MainMenu"
+            android:screenOrientation="landscape">
 
             <!-- <intent-filter> -->
             <!-- <action android:name="android.intent.action.MAIN"/> -->
@@ -50,16 +53,19 @@
             <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->
         </activity>
-        <activity android:name=".UserProfile" />
+        <activity android:name=".UserProfile"
+            android:screenOrientation="landscape"/>
         <!--<activity android:name=".MainActivity" />-->
-        <activity android:name=".listofDeeds">
+        <activity android:name=".listofDeeds"
+            android:screenOrientation="landscape">
             <!--<intent-filter>-->
                 <!--<action android:name="android.intent.action.MAIN" />-->
 
                 <!--<category android:name="android.intent.category.LAUNCHER" />-->
             <!--</intent-filter>-->
         </activity>
-        <activity android:name=".LoginPage">
+        <activity android:name=".LoginPage"
+            android:screenOrientation="landscape">
 
             <intent-filter>
             <action android:name="android.intent.action.MAIN" />
@@ -70,7 +76,8 @@
 
 
         </activity>
-        <activity android:name=".UserCustomize"></activity>
+        <activity android:name=".UserCustomize"
+            android:screenOrientation="landscape"></activity>
     </application>
 
 </manifest>

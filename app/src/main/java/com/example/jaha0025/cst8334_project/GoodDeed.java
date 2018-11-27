@@ -111,7 +111,7 @@ public class GoodDeed extends AppCompatActivity {
             //textView3.setText("Welcome a Neighbour");
             textView3.setTextColor(Color.BLACK);
 
-            textView3.setTextSize(5);
+         //  textView3.setTextSize(5);
         }
         imageViewUpload= findViewById(R.id.imageView2);
 

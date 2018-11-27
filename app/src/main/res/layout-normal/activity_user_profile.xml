@@ -14,11 +14,11 @@
 
         <ImageView
             android:id="@+id/proImgTitle"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="448dp"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/zeel_label" />
+            android:layout_width="100dp"
+            android:layout_height="20dp"
+            android:src="@drawable/zeel_label"
+            android:layout_marginLeft="250dp"
+            android:layout_marginTop="2dp"/>
 
     </LinearLayout>
 
@@ -36,56 +36,58 @@
                 android:id="@+id/proConstraint"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:minHeight="0dp"
                 app:layout_constraintLeft_toLeftOf="@+id/proLinear">
 
 
                 <ImageView
                     android:id="@+id/proImgBack"
-                    android:layout_width="280dp"
-                    android:layout_height="245dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_marginStart="100dp"
+                    android:layout_marginTop="40dp"
                     android:src="@drawable/zeel_profilebg"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/proTxtNameTab"
-                    android:layout_width="106dp"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="92dp"
-                    android:layout_marginTop="72dp"
+                    android:layout_width="55dp"
+                    android:layout_height="10dp"
+                    android:layout_marginStart="150dp"
+                    android:layout_marginTop="50dp"
+                    android:textSize="6dp"
                     android:text="@string/app_name"
-                    android:textSize="20dp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
                     android:id="@+id/proImgAvatar"
-                    android:layout_width="129dp"
-                    android:layout_height="146dp"
-                    android:layout_marginStart="84dp"
-                    android:layout_marginTop="112dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="150dp"
+                    android:layout_marginTop="75dp"
                     android:src="@drawable/zeel_character_portrait"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageButton
                     android:id="@+id/proBtnCustom"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_marginStart="130dp"
+                    android:layout_marginTop="70dp"
                     android:background="@drawable/roundcorner"
-                    android:src="@drawable/zeel_icon_customize"
-                    tools:layout_editor_absoluteX="68dp"
-                    tools:layout_editor_absoluteY="24dp" />
+                    android:src="@drawable/zeel_mobile_icon_customize"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
                     android:id="@+id/proImgBadges"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="472dp"
-                    android:layout_marginTop="308dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="205dp"
+                    android:layout_marginTop="120dp"
                     android:src="@drawable/zeel_badges_grey"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -93,11 +95,11 @@
                 <TextView
                     android:id="@+id/proTxtLevel"
                     android:layout_width="wrap_content"
-                    android:layout_height="192dp"
-                    android:layout_marginStart="50dp"
-                    android:layout_marginTop="275dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="160dp"
+                    android:layout_marginTop="130dp"
                     android:text="Level 1"
-                    android:textSize="40dp"
+                    android:textSize="10dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -105,22 +107,24 @@
                     android:id="@+id/proProgressBar"
                     style="@android:style/Widget.ProgressBar.Horizontal"
                     android:layout_width="wrap_content"
-                    android:layout_height="42dp"
-                    android:layout_marginStart="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="125dp"
+                    android:layout_marginTop="160dp"
                     android:max="10"
-                    android:minWidth="300dp"
-                    android:minHeight="25dp"
+                    android:minWidth="100dp"
+                    android:minHeight="10dp"
                     android:progress="0"
                     app:layout_constraintStart_toStartOf="parent"
-                    tools:layout_editor_absoluteY="100dp" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/proTxtProgress"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="100dp"
                     android:textStyle="bold"
+                    android:textSize="6dp"
+                    android:layout_marginStart="170dp"
+                    android:layout_marginTop="161dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -128,9 +132,9 @@
                     android:id="@+id/proBtnHome"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="36dp"
-                    android:layout_marginTop="570dp"
-                    android:src="@drawable/zeel_icon_home"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="220dp"
+                    android:src="@drawable/zeel__mobile_icon_home"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -138,9 +142,9 @@
                     android:id="@+id/proBtnProfile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="276dp"
-                    android:layout_marginTop="570dp"
-                    android:src="@drawable/zeel_icon_profile"
+                    android:layout_marginStart="140dp"
+                    android:layout_marginTop="220dp"
+                    android:src="@drawable/zeel_mobile_icon_profile"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -148,9 +152,9 @@
                     android:id="@+id/proBtnActs"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="520dp"
-                    android:layout_marginTop="570dp"
-                    android:src="@drawable/zeel_icon_acts"
+                    android:layout_marginStart="240dp"
+                    android:layout_marginTop="220dp"
+                    android:src="@drawable/zeel_mobile_icon_acts"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -174,19 +178,19 @@
                     android:id="@+id/proTxtName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="80dp"
+                    android:layout_marginTop="30dp"
                     android:text="Name : "
-                    android:textSize="40dp" />
+                    android:textSize="12dp" />
 
                 <EditText
                     android:id="@+id/proEdtName"
-                    android:layout_width="450dp"
+                    android:layout_width="220dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="80dp"
+                    android:layout_marginTop="30dp"
                     android:hint="Full Name"
                     android:imeOptions="actionDone"
                     android:inputType="none"
-                    android:textSize="30dp" />
+                    android:textSize="10dp" />
 
 
             </LinearLayout>
@@ -194,22 +198,22 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="0dp">
 
                 <TextView
                     android:id="@+id/proTxtAge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Age     : "
-                    android:textSize="40dp" />
+                    android:textSize="12dp" />
 
                 <EditText
                     android:id="@+id/proEdtAge"
-                    android:layout_width="450dp"
+                    android:layout_width="220dp"
                     android:layout_height="wrap_content"
                     android:hint="Age"
                     android:inputType="none"
-                    android:textSize="30dp" />
+                    android:textSize="10dp" />
 
 
             </LinearLayout>
@@ -217,22 +221,22 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="0dp">
 
                 <TextView
                     android:id="@+id/proTxtGrade"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Grade : "
-                    android:textSize="40dp" />
+                    android:textSize="12dp" />
 
                 <EditText
                     android:id="@+id/proEdtGrade"
-                    android:layout_width="450dp"
+                    android:layout_width="220dp"
                     android:layout_height="wrap_content"
                     android:hint="Grade"
                     android:inputType="none"
-                    android:textSize="30dp" />
+                    android:textSize="10dp" />
 
 
             </LinearLayout>
@@ -240,7 +244,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="0dp">
 
                 <TextView
                     android:id="@+id/proTxtAbout"
@@ -248,16 +252,16 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:text="About : "
-                    android:textSize="40dp" />
+                    android:textSize="12dp" />
 
                 <EditText
                     android:id="@+id/proEdtAbout"
-                    android:layout_width="450dp"
-                    android:layout_height="150dp"
+                    android:layout_width="220dp"
+                    android:layout_height="50dp"
                     android:gravity="top"
                     android:hint="About"
                     android:inputType="none"
-                    android:textSize="30dp" />
+                    android:textSize="10dp" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -266,18 +270,18 @@
 
                     <ImageButton
                         android:id="@+id/proBtnEdit"
-                        android:layout_width="53dp"
-                        android:layout_height="59dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:background="@color/colorAccent"
-                        android:src="@drawable/zeel_icon_edit" />
+                        android:src="@drawable/zeel_mobile_icon_edit" />
 
                     <ImageButton
                         android:id="@+id/proBtnSave"
-                        android:layout_width="53dp"
-                        android:layout_height="59dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="4dp"
                         android:background="@color/bgActs"
-                        android:src="@drawable/zeel_icon_save" />
+                        android:src="@drawable/zeel_mobile_icon_save" />
 
                 </LinearLayout>
 
@@ -285,9 +289,10 @@
 
             <ImageView
                 android:id="@+id/proImgBee"
-                android:layout_width="201dp"
-                android:layout_height="208dp"
+                android:layout_width="50dp"
+                android:layout_height="60dp"
                 android:layout_gravity="center"
+                android:layout_marginTop="5dp"
                 android:src="@drawable/zeel_bee3" />
 
         </LinearLayout>
