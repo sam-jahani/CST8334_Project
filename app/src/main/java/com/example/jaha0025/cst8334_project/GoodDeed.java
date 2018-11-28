@@ -263,22 +263,22 @@ public class GoodDeed extends AppCompatActivity {
 
         switch (requestCode) {
 
-            case (10): {
-                // do this if request code is 10.
-                if (requestCode == 10 && resultCode == RESULT_OK) {
-                    Bundle extras = data.getExtras();
-                    Bitmap imageBitmap = (Bitmap) extras.get("data");
-                    imageViewUpload.setImageBitmap(imageBitmap);
-                }
-            }
-            break;
+//            case (10): {
+//                // do this if request code is 10.
+//                if (requestCode == 10 && resultCode == RESULT_OK) {
+//                    Bundle extras = data.getExtras();
+//                    Bitmap imageBitmap = (Bitmap) extras.get("data");
+//                    imageViewUpload.setImageBitmap(imageBitmap);
+//                }
+//            }
+//            break;
 
-            case (11):
+            case (200):
             {
 
-                if (requestCode==11 &&resultCode == RESULT_OK && data != null) {
+                if (requestCode==200 &&resultCode == RESULT_OK && data != null) {
                     ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
-                    textView.setText(result.get(0));
+                    editText.setText(result.get(0));
                 }
             }
             break;
