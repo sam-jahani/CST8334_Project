@@ -113,17 +113,17 @@ public class GoodDeed extends AppCompatActivity {
 
          //  textView3.setTextSize(5);
         }
-        imageViewUpload= findViewById(R.id.imageView2);
+        //imageViewUpload= findViewById(R.id.imageView2);
 
-        imageViewUpload.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-                    startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
-                }
-            }
-        });
+//        imageViewUpload.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//                if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+//                    startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+//                }
+//            }
+//        });
 
 //    ImageView rightArrow = findViewById(R.id.rightArrow);
 //

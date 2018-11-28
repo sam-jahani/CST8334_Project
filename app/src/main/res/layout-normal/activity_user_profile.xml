@@ -73,8 +73,8 @@
 
                 <ImageButton
                     android:id="@+id/proBtnCustom"
-                    android:layout_width="10dp"
-                    android:layout_height="10dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:layout_marginStart="130dp"
                     android:layout_marginTop="70dp"
                     android:background="@drawable/roundcorner"
